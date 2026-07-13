@@ -5,7 +5,7 @@ import viteReact from '@vitejs/plugin-react'
 import { paraglideVitePlugin } from '@inlang/paraglide-js'
 
 const config = defineConfig({
-  base: process.env.GITHUB_ACTIONS ? '/project-simple-motion-visualizer/' : '/',
+  base: '/project-simple-motion-visualizer/',
   resolve: { tsconfigPaths: true },
   plugins: [
     devtools(),
