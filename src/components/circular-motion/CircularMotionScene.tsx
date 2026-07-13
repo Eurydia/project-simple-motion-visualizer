@@ -4,11 +4,11 @@ import {
   getCircularPosition,
 } from '../../features/circular/computation'
 import type { CircularSimulation } from '../../features/circular/computation'
-import { circularAppearance } from '../../features/circular/config'
 import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
 import { MotionDot } from '../motion-graphics/motion-scene/MotionDot'
 import { MotionLabel } from '../motion-graphics/motion-scene/MotionLabel'
 import { MotionScene } from '../motion-graphics/motion-scene/MotionScene'
+import { useTheme } from '@mui/material/styles'
 
 export const CircularMotionScene: FC<{
   simulation: CircularSimulation
@@ -21,9 +21,11 @@ export const CircularMotionScene: FC<{
   const x = centerX + Math.cos(position.theta) * radius
   const y = centerY + Math.sin(position.theta) * radius
   const direction = simulation.speed >= 0 ? 1 : -1
+
+  const t = useTheme()
+
   return (
     <MotionScene
-      appearance={circularAppearance}
       time={time}
       measurements={getCircularMeasurements(simulation, time)}
     >
@@ -49,7 +51,7 @@ export const CircularMotionScene: FC<{
         stroke="#90a4ae"
         strokeWidth="2"
       />
-      <circle cx={centerX} cy={centerY} r="4" fill={circularAppearance.dark} />
+      <circle cx={centerX} cy={centerY} r="4" fill={t.palette.primary.dark} />
       <MotionArrow x1={centerX} y1={centerY} x2={x} y2={y} label="r" />
       <MotionArrow
         x1={x}

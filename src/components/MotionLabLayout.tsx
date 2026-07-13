@@ -5,6 +5,7 @@ import type { MotionAppearance } from '../types/motion'
 import { BaseLayout } from './BaseLayout'
 import { FormulaPanel } from './FormulaPanel'
 import { PlaybackPanel } from './PlaybackPanel'
+import { useTheme } from '@mui/material/styles'
 
 export const MotionLabLayout: FC<{
   appearance: MotionAppearance
@@ -29,15 +30,16 @@ export const MotionLabLayout: FC<{
   onStepFrame,
   onReset,
 }) => {
+  const t = useTheme()
+
   return (
-    <BaseLayout title={appearance.title} color={appearance.color}>
+    <BaseLayout title={appearance.title} color={t.palette.primary.main}>
       <Stack spacing={4}>
         <Grid container spacing={4} sx={{ display: 'flex' }}>
           <Grid size={{ xs: 12, md: 4 }}>{parameterForm}</Grid>
           <Grid size={{ xs: 12, md: 8 }}>
             <Stack spacing={4}>
               <PlaybackPanel
-                appearance={appearance}
                 visualization={visualization}
                 currentTime={currentTime}
                 duration={duration}

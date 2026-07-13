@@ -12,9 +12,6 @@ export type LinearParameterSetId = 'velocity' | 'endpoints'
 export const linearAppearance: MotionAppearance = {
   title: m.linear_title(),
   formula: 'x(t) = x_0 + vt',
-  color: '#9fa8da',
-  light: '#c5cae9',
-  dark: '#283593',
 }
 export const linearParameterSets: readonly MotionParameterSet<
   LinearParameterSetId,

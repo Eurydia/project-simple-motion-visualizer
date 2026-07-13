@@ -6,12 +6,12 @@ import {
   getParabolaPosition,
 } from '../../features/parabola/computation'
 import type { ParabolaSimulation } from '../../features/parabola/computation'
-import { parabolaAppearance } from '../../features/parabola/config'
 import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
 import { MotionDot } from '../motion-graphics/motion-scene/MotionDot'
 import { MotionLabel } from '../motion-graphics/motion-scene/MotionLabel'
 import { MotionLine } from '../motion-graphics/motion-scene/MotionLine'
 import { MotionScene } from '../motion-graphics/motion-scene/MotionScene'
+import { useTheme } from '@mui/material/styles'
 
 export const ParabolaMotionScene: FC<{
   simulation: ParabolaSimulation
@@ -32,9 +32,11 @@ export const ParabolaMotionScene: FC<{
   const x = originX + point.x * scale
   const y = groundY - point.y * scale
   const vectorLength = Math.min(90, simulation.velocity * 3)
+
+  const t = useTheme()
+
   return (
     <MotionScene
-      appearance={parabolaAppearance}
       time={time}
       measurements={getParabolaMeasurements(simulation, time)}
     >
@@ -45,7 +47,7 @@ export const ParabolaMotionScene: FC<{
         animate={{ pathLength: 1 }}
         transition={{ duration: 0.45 }}
         fill="none"
-        stroke={parabolaAppearance.dark}
+        stroke={t.palette.primary.dark}
         strokeWidth="2"
         strokeDasharray="7 7"
         points={trajectory}

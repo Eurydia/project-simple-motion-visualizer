@@ -5,13 +5,13 @@ import {
   getSpringPosition,
 } from '../../features/spring/computation'
 import type { SpringSimulation } from '../../features/spring/computation'
-import { springAppearance } from '../../features/spring/config'
 import { m } from '../../paraglide/messages.js'
 import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
 import { MotionDot } from '../motion-graphics/motion-scene/MotionDot'
 import { MotionLabel } from '../motion-graphics/motion-scene/MotionLabel'
 import { MotionLine } from '../motion-graphics/motion-scene/MotionLine'
 import { MotionScene } from '../motion-graphics/motion-scene/MotionScene'
+import { useTheme } from '@mui/material/styles'
 
 export const SpringMotionScene: FC<{
   simulation: SpringSimulation
@@ -24,18 +24,17 @@ export const SpringMotionScene: FC<{
     equilibrium +
     (getSpringPosition(simulation, time) / simulation.amplitude) * amplitude
   const wall = 80
-
   const points = Array.from({ length: 19 }, (_, index) => {
     const px = wall + ((x - wall) * index) / 18
     const py = y + (index === 0 || index === 18 ? 0 : index % 2 ? -13 : 13)
     return `${px},${py}`
   }).join(' ')
 
+  const t = useTheme()
   return (
     <MotionScene
       time={time}
       measurements={getSpringMeasurements(simulation, time)}
-      appearance={springAppearance}
     >
       <MotionLine x1={equilibrium} y1={76} x2={equilibrium} y2={344} dashed />
       <MotionLabel
@@ -76,7 +75,7 @@ export const SpringMotionScene: FC<{
         animate={{ points }}
         transition={{ duration: 0 }}
         fill="none"
-        stroke={springAppearance.dark}
+        stroke={t.palette.primary.dark}
         strokeWidth="3"
         points={points}
       />

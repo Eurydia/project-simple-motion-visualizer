@@ -14,10 +14,8 @@ import Typography from '@mui/material/Typography'
 import type { FC, ReactNode } from 'react'
 import { formatTimelineTime } from '../helpers/playback'
 import { m } from '../paraglide/messages.js'
-import type { MotionAppearance } from '../types/motion'
 
 export const PlaybackPanel: FC<{
-  appearance: MotionAppearance
   visualization: ReactNode
   currentTime: number
   duration: number
@@ -27,7 +25,6 @@ export const PlaybackPanel: FC<{
   onStepFrame: (direction: -1 | 1) => void
   onReset: () => void
 }> = ({
-  appearance,
   visualization,
   currentTime,
   duration,
@@ -46,7 +43,7 @@ export const PlaybackPanel: FC<{
           startIcon={playing ? <PauseRounded /> : <PlayArrowRounded />}
           onClick={() => onPlayingChange(!playing)}
           sx={{
-            bgcolor: appearance.dark,
+            bgcolor: (t) => t.palette.primary.dark,
           }}
         >
           {playing ? m.pause() : m.play()}
@@ -77,10 +74,12 @@ export const PlaybackPanel: FC<{
           value={Math.min(currentTime, duration)}
           onChange={(_, value) => {
             onPlayingChange(false)
-            if (typeof value === 'number') onTimeChange(value)
+            if (typeof value === 'number') {
+              onTimeChange(value)
+            }
           }}
           sx={{
-            color: appearance.dark,
+            color: (t) => t.palette.primary.dark,
           }}
         />
         <Stack direction="row" sx={{ justifyContent: 'space-between' }}>

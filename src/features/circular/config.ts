@@ -18,9 +18,6 @@ export type CircularParameterSetId = 'angular' | 'period' | 'tangential'
 export const circularAppearance: MotionAppearance = {
   title: m.circular_title(),
   formula: '\\theta(t) = \\theta_0 + \\omega t',
-  color: '#f48fb1',
-  light: '#f8bbd0',
-  dark: '#880e4f',
 }
 const radius: MotionParameter<CircularField> = {
   key: 'radius',

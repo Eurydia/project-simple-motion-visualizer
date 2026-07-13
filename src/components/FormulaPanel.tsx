@@ -10,9 +10,12 @@ export const FormulaPanel: FC<{ appearance: MotionAppearance }> = ({
 }) => (
   <Card
     elevation={0}
-    sx={{ bgcolor: appearance.light, color: appearance.dark }}
+    sx={(t) => ({
+      backgroundColor: t.palette.primary.light,
+      color: t.palette.primary.dark,
+    })}
   >
-    <CardContent sx={{ p: { xs: 3, md: 4 } }}>
+    <CardContent sx={{ padding: 3 }}>
       <Typography component="div" variant="h5" sx={{ fontWeight: 700 }}>
         <MathText math={appearance.formula} display />
       </Typography>

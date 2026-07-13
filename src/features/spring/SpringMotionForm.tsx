@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import type { useSpringMotion } from '../../hooks/use-spring-motion'
 import { ParameterFormLayout } from '../../components/forms/ParameterFormLayout'
 import { ParameterSetSelector } from '../../components/forms/ParameterSetSelector'
-import { springAppearance, springParameterSets } from './config'
+import { springParameterSets } from './config'
 
 export const SpringMotionForm: FC<{
   controller: ReturnType<typeof useSpringMotion>
@@ -32,12 +32,7 @@ export const SpringMotionForm: FC<{
         <Stack spacing={3}>
           {parameterSet.parameters.map((parameter) => (
             <controller.form.AppField key={parameter.key} name={parameter.key}>
-              {(field) => (
-                <field.MotionNumberField
-                  parameter={parameter}
-                  appearance={springAppearance}
-                />
-              )}
+              {(field) => <field.MotionNumberField parameter={parameter} />}
             </controller.form.AppField>
           ))}
         </Stack>

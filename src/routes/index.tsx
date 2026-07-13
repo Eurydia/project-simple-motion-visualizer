@@ -18,24 +18,33 @@ import { m } from '../paraglide/messages.js'
 import type { MotionAppearance, MotionKind } from '../types/motion'
 import { RouterCardActions } from '#/components/RouterCardAction.js'
 import type { FileRouteTypes } from '#/routeTree.gen.js'
+import { ThemeProvider } from '@emotion/react'
+import type { Theme } from '@mui/material/styles'
+import { SPRING_THEME } from '#/theme/spring.js'
+import { PARABOLA_THEME } from '#/theme/parabola.js'
+import { LINEAR_THEME } from '#/theme/linear.js'
+import { CIRCULAR_THEME } from '#/theme/circular.js'
 
 const motionCards: readonly {
   id: MotionKind
   route: FileRouteTypes['to']
   appearance: MotionAppearance
   icon: ReactNode
+  theme: Theme
 }[] = [
   {
     id: 'spring',
     route: '/spring',
     appearance: springAppearance,
     icon: <WavesRounded fontSize="inherit" />,
+    theme: SPRING_THEME,
   },
   {
     id: 'parabola',
     route: '/parabola',
     appearance: parabolaAppearance,
     icon: <ShowChartRounded fontSize="inherit" />,
+    theme: PARABOLA_THEME,
   },
   {
     id: 'linear',
@@ -44,12 +53,14 @@ const motionCards: readonly {
     icon: (
       <HeightRounded fontSize="inherit" sx={{ transform: 'rotate(90deg)' }} />
     ),
+    theme: LINEAR_THEME,
   },
   {
     id: 'circular',
     route: '/circular',
     appearance: circularAppearance,
     icon: <RotateRightRounded fontSize="inherit" />,
+    theme: CIRCULAR_THEME,
   },
 ]
 export const Route = createFileRoute('/')({ component: HomePage })
@@ -58,43 +69,45 @@ function HomePage() {
   return (
     <BaseLayout title={m.app_title()} color="#81d4fa">
       <Grid container spacing={4}>
-        {motionCards.map(({ id, route, appearance, icon }) => (
+        {motionCards.map(({ theme, id, route, appearance, icon }) => (
           <Grid key={id} size={{ xs: 12, md: 6 }}>
-            <Card
-              elevation={0}
-              sx={{
-                bgcolor: appearance.light,
-                color: appearance.dark,
-                ':hover': {
-                  boxShadow: (t) => t.shadows[8],
-                },
-              }}
-            >
-              <RouterCardActions
-                to={route}
+            <ThemeProvider theme={theme}>
+              <Card
+                elevation={0}
                 sx={{
-                  cursor: 'pointer',
+                  bgcolor: (t) => t.palette.primary.light,
+                  color: (t) => t.palette.primary.dark,
+                  ':hover': {
+                    boxShadow: (t) => t.shadows[8],
+                  },
                 }}
               >
-                <Stack
-                  sx={{ padding: 2 }}
-                  direction={{ xs: 'column', md: 'row' }}
+                <RouterCardActions
+                  to={route}
+                  sx={{
+                    cursor: 'pointer',
+                  }}
                 >
-                  <CardContent
-                    sx={{
-                      minHeight: 150,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: { xs: 70, md: 92 },
-                    }}
+                  <Stack
+                    sx={{ padding: 2 }}
+                    direction={{ xs: 'column', md: 'row' }}
                   >
-                    {icon}
-                  </CardContent>
-                  <CardHeader title={appearance.title} />
-                </Stack>
-              </RouterCardActions>
-            </Card>
+                    <CardContent
+                      sx={{
+                        minHeight: 150,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: { xs: 70, md: 92 },
+                      }}
+                    >
+                      {icon}
+                    </CardContent>
+                    <CardHeader title={appearance.title} />
+                  </Stack>
+                </RouterCardActions>
+              </Card>
+            </ThemeProvider>
           </Grid>
         ))}
       </Grid>

@@ -5,9 +5,6 @@ export type MotionKind = 'spring' | 'parabola' | 'linear' | 'circular'
 export type MotionAppearance = {
   title: LocalizedString
   formula: string
-  color: string
-  light: string
-  dark: string
 }
 
 export type MotionParameter<TFieldName extends string> = {

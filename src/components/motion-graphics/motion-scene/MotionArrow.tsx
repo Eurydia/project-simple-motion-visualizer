@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import { useMotionSceneContext } from './MotionSceneContext'
 import { MotionLabel } from './MotionLabel'
+import { useTheme } from '@mui/material/styles'
 
 export const MotionArrow: FC<{
   x1: number
@@ -9,7 +10,8 @@ export const MotionArrow: FC<{
   y2: number
   label?: string
 }> = ({ x1, y1, x2, y2, label }) => {
-  const { appearance, arrowMarkerId } = useMotionSceneContext()
+  const { arrowMarkerId } = useMotionSceneContext()
+  const t = useTheme()
   return (
     <g>
       <line
@@ -17,7 +19,7 @@ export const MotionArrow: FC<{
         y1={y1}
         x2={x2}
         y2={y2}
-        stroke={appearance.dark}
+        stroke={t.palette.primary.dark}
         strokeWidth="2"
         markerEnd={`url(#${arrowMarkerId})`}
       />

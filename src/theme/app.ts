@@ -4,7 +4,7 @@ import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 
-export const theme = responsiveFontSizes(
+export const APP_THEME = responsiveFontSizes(
   createTheme({
     palette: {
       mode: 'light',

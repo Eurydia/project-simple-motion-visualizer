@@ -10,8 +10,8 @@ import {
 } from '../features/parabola/config'
 import type { ParabolaParameterSetId } from '../features/parabola/config'
 import { createParabolaSchema } from '../features/parabola/schema'
-import { useMotionForm } from '../components/forms/motion-form-context'
 import { useMotionPlayback } from './use-motion-playback'
+import { useMotionForm } from '#/lib/form-hooks'
 
 export const useParabolaMotion = () => {
   const [parameterSetId, setParameterSetId] =
@@ -23,7 +23,6 @@ export const useParabolaMotion = () => {
   const form = useMotionForm({
     defaultValues: parabolaDefaults,
     validators: { onChange: schema },
-    onSubmit: () => undefined,
   })
   const values = useStore(form.store, (state) => state.values)
   const isValid = useStore(form.store, (state) => state.isValid)

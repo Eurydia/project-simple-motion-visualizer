@@ -1,5 +1,5 @@
-import { useStore } from '@tanstack/react-form'
-import { useMemo, useRef, useState } from 'react'
+import { useSelector } from '@tanstack/react-form'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import {
   createSpringSimulation,
   getSpringDuration,
@@ -7,8 +7,8 @@ import {
 import { springDefaults, springParameterSets } from '../features/spring/config'
 import type { SpringParameterSetId } from '../features/spring/config'
 import { createSpringSchema } from '../features/spring/schema'
-import { useMotionForm } from '../components/forms/motion-form-context'
 import { useMotionPlayback } from './use-motion-playback'
+import { useMotionForm } from '#/lib/form-hooks'
 
 export const useSpringMotion = () => {
   const [parameterSetId, setParameterSetId] =
@@ -20,26 +20,29 @@ export const useSpringMotion = () => {
   const form = useMotionForm({
     defaultValues: springDefaults,
     validators: { onChange: schema },
-    onSubmit: () => undefined,
   })
-  const values = useStore(form.store, (state) => state.values)
-  const isValid = useStore(form.store, (state) => state.isValid)
+  const values = useSelector(form.store, (state) => state.values)
+  const isValid = useSelector(form.store, (state) => state.isValid)
   const lastValid = useRef(createSpringSimulation('physical', springDefaults))
-  if (isValid)
+  if (isValid) {
     lastValid.current = createSpringSimulation(parameterSetId, values)
+  }
   const simulation = lastValid.current
   const playback = useMotionPlayback(getSpringDuration(simulation))
-  const selectParameterSet = (nextId: SpringParameterSetId) => {
+
+  const selectParameterSet = useCallback((nextId: SpringParameterSetId) => {
     setParameterSetId(nextId)
     form.reset(springDefaults)
     lastValid.current = createSpringSimulation(nextId, springDefaults)
     playback.resetPlayback()
-  }
-  const reset = () => {
+  }, [])
+
+  const reset = useCallback(() => {
     form.reset(springDefaults)
     lastValid.current = createSpringSimulation(parameterSetId, springDefaults)
     playback.resetPlayback()
-  }
+  }, [])
+
   return {
     form,
     parameterSetId,

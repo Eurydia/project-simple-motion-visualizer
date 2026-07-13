@@ -4,6 +4,7 @@ import type { SpringFormValues, SpringParameterSetId } from './config'
 
 const number = (label: string) =>
   z.number({ error: m.validation_number({ label }) })
+
 const baseSchema = z.object({
   amplitude: number(m.amplitude()),
   stiffness: number(m.stiffness()),

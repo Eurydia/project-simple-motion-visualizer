@@ -4,7 +4,6 @@ import {
   getLinearPosition,
 } from '../../features/linear/computation'
 import type { LinearSimulation } from '../../features/linear/computation'
-import { linearAppearance } from '../../features/linear/config'
 import { m } from '../../paraglide/messages.js'
 import { formatMeasurement } from '../motion-graphics/motion-scene/format-measurement'
 import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
@@ -29,7 +28,6 @@ export const LinearMotionScene: FC<{
     <MotionScene
       time={time}
       measurements={getLinearMeasurements(simulation, time)}
-      appearance={linearAppearance}
     >
       <MotionArrow
         x1={startX}

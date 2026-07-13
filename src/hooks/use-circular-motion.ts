@@ -1,5 +1,5 @@
-import { useStore } from '@tanstack/react-form'
-import { useMemo, useRef, useState } from 'react'
+import { useSelector } from '@tanstack/react-form'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createCircularSimulation,
   getCircularDuration,
@@ -10,8 +10,8 @@ import {
 } from '../features/circular/config'
 import type { CircularParameterSetId } from '../features/circular/config'
 import { createCircularSchema } from '../features/circular/schema'
-import { useMotionForm } from '../components/forms/motion-form-context'
 import { useMotionPlayback } from './use-motion-playback'
+import { useMotionForm } from '#/lib/form-hooks'
 
 export const useCircularMotion = () => {
   const [parameterSetId, setParameterSetId] =
@@ -23,17 +23,19 @@ export const useCircularMotion = () => {
   const form = useMotionForm({
     defaultValues: circularDefaults,
     validators: { onChange: schema },
-    onSubmit: () => undefined,
   })
-  const values = useStore(form.store, (state) => state.values)
-  const isValid = useStore(form.store, (state) => state.isValid)
+  const values = useSelector(form.store, (state) => state.values)
+  const isValid = useSelector(form.store, (state) => state.isValid)
   const lastValid = useRef(
     createCircularSimulation('angular', circularDefaults),
   )
-  if (isValid)
-    lastValid.current = createCircularSimulation(parameterSetId, values)
-  const simulation = lastValid.current
-  const playback = useMotionPlayback(getCircularDuration(simulation))
+  useEffect(() => {
+    if (isValid) {
+      lastValid.current = createCircularSimulation(parameterSetId, values)
+    }
+  }, [isValid])
+
+  const playback = useMotionPlayback(getCircularDuration(lastValid.current))
   const selectParameterSet = (nextId: CircularParameterSetId) => {
     setParameterSetId(nextId)
     form.reset(circularDefaults)
@@ -53,8 +55,8 @@ export const useCircularMotion = () => {
     parameterSetId,
     parameterSets: circularParameterSets,
     selectParameterSet,
-    simulation,
-    duration: getCircularDuration(simulation),
+    simulation: lastValid.current,
+    duration: getCircularDuration(lastValid.current),
     reset,
     ...playback,
   }

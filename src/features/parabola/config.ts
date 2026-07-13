@@ -20,9 +20,6 @@ export type ParabolaParameterSetId = 'polar' | 'components' | 'apex'
 export const parabolaAppearance: MotionAppearance = {
   title: m.parabola_title(),
   formula: 'y(t) = y_0 + v_0 \\sin(\\theta)t - \\frac{1}{2}gt^2',
-  color: '#ffcc80',
-  light: '#ffe0b2',
-  dark: '#7c2d12',
 }
 const gravity: MotionParameter<ParabolaField> = {
   key: 'gravity',

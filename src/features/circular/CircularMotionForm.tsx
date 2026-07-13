@@ -3,13 +3,14 @@ import type { FC } from 'react'
 import type { useCircularMotion } from '../../hooks/use-circular-motion'
 import { ParameterFormLayout } from '../../components/forms/ParameterFormLayout'
 import { ParameterSetSelector } from '../../components/forms/ParameterSetSelector'
-import { circularAppearance, circularParameterSets } from './config'
+import { circularParameterSets } from './config'
 import type { CircularParameterSetId } from './config'
 
 const isCircularParameterSetId = (
   value: string,
 ): value is CircularParameterSetId =>
   value === 'angular' || value === 'period' || value === 'tangential'
+
 export const CircularMotionForm: FC<{
   controller: ReturnType<typeof useCircularMotion>
 }> = ({ controller }) => {
@@ -35,12 +36,7 @@ export const CircularMotionForm: FC<{
         <Stack spacing={3}>
           {parameterSet.parameters.map((parameter) => (
             <controller.form.AppField key={parameter.key} name={parameter.key}>
-              {(field) => (
-                <field.MotionNumberField
-                  parameter={parameter}
-                  appearance={circularAppearance}
-                />
-              )}
+              {(field) => <field.MotionNumberField parameter={parameter} />}
             </controller.form.AppField>
           ))}
         </Stack>

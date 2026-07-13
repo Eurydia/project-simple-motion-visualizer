@@ -8,9 +8,6 @@ import type {
 export const springAppearance: MotionAppearance = {
   title: m.spring_title(),
   formula: 'x(t) = A e^{-bt} \\cos(\\omega t)',
-  color: '#80cbc4',
-  light: '#b2dfdb',
-  dark: '#004d40',
 }
 
 export type SpringFormValues = {

@@ -1,28 +1,26 @@
 import type { FC, ReactNode } from 'react'
 import { useId } from 'react'
 import { motion } from 'motion/react'
-import type { MotionAppearance, MotionMeasurement } from '../../../types/motion'
+import type { MotionMeasurement } from '../../../types/motion'
 import { SceneDefinitions } from './SceneDefinitions'
 import { MotionSceneContext } from './MotionSceneContext'
 import { SceneMeasurements } from './SceneMeasurements'
 import { sceneTokens } from './scene-tokens'
+import { useTheme } from '@mui/material/styles'
 
 export const MotionScene: FC<{
-  appearance: MotionAppearance
   time: number
   measurements: readonly MotionMeasurement[]
   children: ReactNode
-}> = ({ appearance, time, measurements, children }) => {
+}> = (props) => {
   const instanceId = useId().replace(/:/g, '')
   const arrowMarkerId = `motion-arrow-${instanceId}`
   const glowFilterId = `motion-glow-${instanceId}`
+  const t = useTheme()
   return (
-    <MotionSceneContext.Provider
-      value={{ appearance, arrowMarkerId, glowFilterId }}
-    >
+    <MotionSceneContext.Provider value={{ arrowMarkerId, glowFilterId }}>
       <svg
         viewBox={`0 0 ${sceneTokens.width} ${sceneTokens.height}`}
-        role="img"
         style={{
           display: 'block',
           width: '100%',
@@ -34,7 +32,7 @@ export const MotionScene: FC<{
           instanceId={instanceId}
           arrowMarkerId={arrowMarkerId}
           glowFilterId={glowFilterId}
-          arrowColor={appearance.dark}
+          arrowColor={t.palette.primary.dark}
         />
         <rect
           width={sceneTokens.width}
@@ -46,12 +44,12 @@ export const MotionScene: FC<{
           animate={{ opacity: 1 }}
           transition={{ duration: 0.18 }}
         >
-          {children}
+          {props.children}
         </motion.g>
         <SceneMeasurements
-          color={appearance.dark}
-          time={time}
-          measurements={measurements}
+          color={t.palette.primary.dark}
+          time={props.time}
+          measurements={props.measurements}
         />
       </svg>
     </MotionSceneContext.Provider>

@@ -1,5 +1,5 @@
-import { useStore } from '@tanstack/react-form'
-import { useMemo, useRef, useState } from 'react'
+import { useSelector } from '@tanstack/react-form'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createLinearSimulation,
   getLinearDuration,
@@ -7,8 +7,8 @@ import {
 import { linearDefaults, linearParameterSets } from '../features/linear/config'
 import type { LinearParameterSetId } from '../features/linear/config'
 import { createLinearSchema } from '../features/linear/schema'
-import { useMotionForm } from '../components/forms/motion-form-context'
 import { useMotionPlayback } from './use-motion-playback'
+import { useMotionForm } from '#/lib/form-hooks'
 
 export const useLinearMotion = () => {
   const [parameterSetId, setParameterSetId] =
@@ -22,13 +22,18 @@ export const useLinearMotion = () => {
     validators: { onChange: schema },
     onSubmit: () => undefined,
   })
-  const values = useStore(form.store, (state) => state.values)
-  const isValid = useStore(form.store, (state) => state.isValid)
+
+  const values = useSelector(form.store, (state) => state.values)
+  const isValid = useSelector(form.store, (state) => state.isValid)
   const lastValid = useRef(createLinearSimulation('velocity', linearDefaults))
-  if (isValid)
-    lastValid.current = createLinearSimulation(parameterSetId, values)
-  const simulation = lastValid.current
-  const playback = useMotionPlayback(getLinearDuration(simulation))
+
+  useEffect(() => {
+    if (isValid) {
+      lastValid.current = createLinearSimulation(parameterSetId, values)
+    }
+  }, [isValid])
+
+  const playback = useMotionPlayback(getLinearDuration(lastValid.current))
   const selectParameterSet = (nextId: LinearParameterSetId) => {
     setParameterSetId(nextId)
     form.reset(linearDefaults)
@@ -45,8 +50,8 @@ export const useLinearMotion = () => {
     parameterSetId,
     parameterSets: linearParameterSets,
     selectParameterSet,
-    simulation,
-    duration: getLinearDuration(simulation),
+    simulation: lastValid.current,
+    duration: getLinearDuration(lastValid.current),
     reset,
     ...playback,
   }

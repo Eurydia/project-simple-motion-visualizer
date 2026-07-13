@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import ThemeProvider from '@mui/system/ThemeProvider'
 import type { FC } from 'react'
 import { getLocale, setLocale } from '../paraglide/runtime.js'
-import { theme } from '../theme/app.js'
+import { APP_THEME } from '../theme/app.js'
 import { m } from '#/paraglide/messages.js'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
@@ -20,7 +20,7 @@ const NAV_ITEMS = [
 const RootComponent: FC = () => {
   document.documentElement.lang = getLocale()
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={APP_THEME}>
       <CssBaseline />
       <Container maxWidth="lg" sx={{ py: 4 }}>
         <Stack

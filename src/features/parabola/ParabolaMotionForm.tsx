@@ -35,12 +35,7 @@ export const ParabolaMotionForm: FC<{
         <Stack spacing={3}>
           {parameterSet.parameters.map((parameter) => (
             <controller.form.AppField key={parameter.key} name={parameter.key}>
-              {(field) => (
-                <field.MotionNumberField
-                  parameter={parameter}
-                  appearance={parabolaAppearance}
-                />
-              )}
+              {(field) => <field.MotionNumberField parameter={parameter} />}
             </controller.form.AppField>
           ))}
         </Stack>

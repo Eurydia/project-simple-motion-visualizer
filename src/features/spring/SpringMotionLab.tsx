@@ -7,6 +7,7 @@ import { springAppearance } from './config'
 
 export const SpringMotionLab: FC = () => {
   const controller = useSpringMotion()
+
   return (
     <MotionLabLayout
       appearance={springAppearance}
