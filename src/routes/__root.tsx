@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
 import { RouterLink } from '#/components/RouterLink.js'
+import Divider from '@mui/material/Divider'
 
 const NAV_ITEMS = [
   [m.nav_spring, '/spring'],
@@ -24,19 +25,32 @@ const RootComponent: FC = () => {
       <CssBaseline />
       <Container maxWidth="lg" sx={{ py: 4 }}>
         <Stack
+          divider={<Divider flexItem orientation="vertical" />}
           direction="row"
           useFlexGap
           spacing={2}
           sx={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}
         >
-          <RouterLink color="textPrimary" to="/">
-            {m.nav_home()}
-          </RouterLink>
-          {NAV_ITEMS.map(([label, to]) => (
-            <RouterLink key={to} to={to} color="textPrimary">
-              {label()}
+          <Stack
+            direction="row"
+            useFlexGap
+            spacing={2}
+            sx={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}
+          >
+            <RouterLink sx={{ cursor: 'pointer' }} color="textPrimary" to="/">
+              {m.nav_home()}
             </RouterLink>
-          ))}
+            {NAV_ITEMS.map(([label, to]) => (
+              <RouterLink
+                key={to}
+                to={to}
+                color="textPrimary"
+                sx={{ cursor: 'pointer' }}
+              >
+                {label()}
+              </RouterLink>
+            ))}
+          </Stack>
           <Typography
             sx={{ cursor: 'pointer' }}
             onClick={() => setLocale(getLocale() === 'en' ? 'th' : 'en')}
