@@ -1,4 +1,4 @@
-import { m } from '../../paraglide/messages.js'
+import { m } from '#/paraglide/messages'
 import type {
   MotionAppearance,
   MotionParameter,
@@ -26,17 +26,17 @@ export type SpringParameterSetId = 'physical' | 'frequency' | 'period'
 
 const amplitude: MotionParameter<SpringField> = {
   key: 'amplitude',
-  label: m.amplitude,
+  label: m.amplitude(),
   symbol: 'A',
-  hint: m.hint_amplitude,
+  hint: m.hint_amplitude(),
   unit: 'm',
   step: 0.1,
 }
 const damping: MotionParameter<SpringField> = {
   key: 'damping',
-  label: m.damping,
+  label: m.damping(),
   symbol: 'b',
-  hint: m.hint_damping,
+  hint: m.hint_damping(),
   unit: 's⁻¹',
   step: 0.01,
 }
@@ -47,24 +47,24 @@ export const springParameterSets: readonly MotionParameterSet<
 >[] = [
   {
     id: 'physical',
-    label: m.physical,
-    description: m.use_stiffness_mass,
+    label: m.physical(),
+    description: m.use_stiffness_mass(),
     parameters: [
       amplitude,
       {
         key: 'stiffness',
-        label: m.stiffness,
+        label: m.stiffness(),
         symbol: 'k',
-        hint: m.hint_stiffness,
+        hint: m.hint_stiffness(),
         unit: 'N/m',
         step: 0.5,
       },
       damping,
       {
         key: 'mass',
-        label: m.mass,
+        label: m.mass(),
         symbol: 'm',
-        hint: m.hint_mass,
+        hint: m.hint_mass(),
         unit: 'kg',
         step: 0.1,
       },
@@ -72,15 +72,15 @@ export const springParameterSets: readonly MotionParameterSet<
   },
   {
     id: 'frequency',
-    label: m.frequency,
-    description: m.use_frequency,
+    label: m.frequency(),
+    description: m.use_frequency(),
     parameters: [
       amplitude,
       {
         key: 'omega',
-        label: m.angular_frequency,
+        label: m.angular_frequency(),
         symbol: '\\omega',
-        hint: m.hint_angular_frequency,
+        hint: m.hint_angular_frequency(),
         unit: 'rad/s',
         step: 0.1,
       },
@@ -89,15 +89,15 @@ export const springParameterSets: readonly MotionParameterSet<
   },
   {
     id: 'period',
-    label: m.period,
-    description: m.use_period,
+    label: m.period(),
+    description: m.use_period(),
     parameters: [
       amplitude,
       {
         key: 'period',
-        label: m.period,
+        label: m.period(),
         symbol: 'T',
-        hint: m.hint_period_cycle,
+        hint: m.hint_period_cycle(),
         unit: 's',
         step: 0.1,
       },

@@ -24,8 +24,8 @@ export const ParabolaMotionForm: FC<{
     <ParameterFormLayout
       selector={
         <ParameterSetSelector
-          sets={parabolaParameterSets}
-          selectedId={controller.parameterSetId}
+          options={parabolaParameterSets}
+          activeValueId={controller.parameterSetId}
           onChange={(id) => {
             if (isParabolaParameterSetId(id)) controller.selectParameterSet(id)
           }}

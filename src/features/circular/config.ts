@@ -14,9 +14,9 @@ export type CircularFormValues = {
 }
 export type CircularField = keyof CircularFormValues
 export type CircularParameterSetId = 'angular' | 'period' | 'tangential'
+
 export const circularAppearance: MotionAppearance = {
-  title: m.circular_title,
-  description: m.circular_description,
+  title: m.circular_title(),
   formula: '\\theta(t) = \\theta_0 + \\omega t',
   color: '#f48fb1',
   light: '#f8bbd0',
@@ -24,17 +24,17 @@ export const circularAppearance: MotionAppearance = {
 }
 const radius: MotionParameter<CircularField> = {
   key: 'radius',
-  label: m.radius,
+  label: m.radius(),
   symbol: 'r',
-  hint: m.hint_radius,
+  hint: m.hint_radius(),
   unit: 'm',
   step: 0.5,
 }
 const angle: MotionParameter<CircularField> = {
   key: 'angle',
-  label: m.start_angle,
+  label: m.start_angle(),
   symbol: '\\theta_0',
-  hint: m.hint_start_angle,
+  hint: m.hint_start_angle(),
   unit: '°',
   step: 5,
 }
@@ -44,15 +44,15 @@ export const circularParameterSets: readonly MotionParameterSet<
 >[] = [
   {
     id: 'angular',
-    label: m.angular_velocity,
-    description: m.use_rotation_rate,
+    label: m.angular_velocity(),
+    description: m.use_rotation_rate(),
     parameters: [
       radius,
       {
         key: 'speed',
-        label: m.angular_velocity,
+        label: m.angular_velocity(),
         symbol: '\\omega',
-        hint: m.hint_angular_velocity,
+        hint: m.hint_angular_velocity(),
         unit: 'rad/s',
         step: 0.1,
       },
@@ -61,15 +61,15 @@ export const circularParameterSets: readonly MotionParameterSet<
   },
   {
     id: 'period',
-    label: m.period,
-    description: m.use_revolution_time,
+    label: m.period(),
+    description: m.use_revolution_time(),
     parameters: [
       radius,
       {
         key: 'period',
-        label: m.orbital_period,
+        label: m.orbital_period(),
         symbol: 'T',
-        hint: m.hint_orbital_period,
+        hint: m.hint_orbital_period(),
         unit: 's',
         step: 0.1,
       },
@@ -78,15 +78,15 @@ export const circularParameterSets: readonly MotionParameterSet<
   },
   {
     id: 'tangential',
-    label: m.tangential_speed,
-    description: m.use_path_speed,
+    label: m.tangential_speed(),
+    description: m.use_path_speed(),
     parameters: [
       radius,
       {
         key: 'tangentialVelocity',
-        label: m.tangential_velocity,
+        label: m.tangential_velocity(),
         symbol: 'v_t',
-        hint: m.hint_tangential_velocity,
+        hint: m.hint_tangential_velocity(),
         unit: 'm/s',
         step: 0.5,
       },

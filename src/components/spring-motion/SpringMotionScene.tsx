@@ -35,6 +35,7 @@ export const SpringMotionScene: FC<{
     <MotionScene
       time={time}
       measurements={getSpringMeasurements(simulation, time)}
+      appearance={springAppearance}
     >
       <MotionLine x1={equilibrium} y1={76} x2={equilibrium} y2={344} dashed />
       <MotionLabel

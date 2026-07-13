@@ -22,8 +22,8 @@ export const LinearMotionForm: FC<{
     <ParameterFormLayout
       selector={
         <ParameterSetSelector
-          sets={linearParameterSets}
-          selectedId={controller.parameterSetId}
+          options={linearParameterSets}
+          activeValueId={controller.parameterSetId}
           onChange={(id) => {
             if (isLinearParameterSetId(id)) controller.selectParameterSet(id)
           }}

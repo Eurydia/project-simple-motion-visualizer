@@ -1,26 +1,28 @@
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import type { FC } from 'react'
-import type { MotionParameterSet } from '../../types/motion'
+import { Stack } from '@mui/system'
+import Button from '@mui/material/Button'
 
 export const ParameterSetSelector: FC<{
-  sets: readonly MotionParameterSet<string, string>[]
-  selectedId: string
+  options: ReadonlyArray<Readonly<{ id: string; label: string }>>
+  activeValueId: string
   onChange: (id: string) => void
-}> = ({ sets, selectedId, onChange }) => (
-  <ToggleButtonGroup
-    exclusive
-    fullWidth
-    size="small"
-    value={selectedId}
-    onChange={(_, nextId: string | null) => {
-      if (nextId !== null) onChange(nextId)
-    }}
-  >
-    {sets.map((set) => (
-      <ToggleButton disableTouchRipple key={set.id} value={set.id}>
-        {set.label()}
-      </ToggleButton>
-    ))}
-  </ToggleButtonGroup>
-)
+}> = (props) => {
+  return (
+    <Stack direction={'row'} spacing={1} useFlexGap sx={{ flexWrap: 'wrap' }}>
+      {props.options.map((opt) => (
+        <Button
+          disableElevation
+          key={opt.id}
+          variant={opt.id === props.activeValueId ? 'contained' : 'outlined'}
+          onClick={() => {
+            if (props.activeValueId !== opt.id) {
+              props.onChange(opt.id)
+            }
+          }}
+        >
+          {opt.label}
+        </Button>
+      ))}
+    </Stack>
+  )
+}

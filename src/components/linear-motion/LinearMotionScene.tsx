@@ -29,6 +29,7 @@ export const LinearMotionScene: FC<{
     <MotionScene
       time={time}
       measurements={getLinearMeasurements(simulation, time)}
+      appearance={linearAppearance}
     >
       <MotionArrow
         x1={startX}

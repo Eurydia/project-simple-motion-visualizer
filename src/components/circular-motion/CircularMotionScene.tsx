@@ -23,6 +23,7 @@ export const CircularMotionScene: FC<{
   const direction = simulation.speed >= 0 ? 1 : -1
   return (
     <MotionScene
+      appearance={circularAppearance}
       time={time}
       measurements={getCircularMeasurements(simulation, time)}
     >

@@ -19,8 +19,8 @@ export const SpringMotionForm: FC<{
     <ParameterFormLayout
       selector={
         <ParameterSetSelector
-          sets={springParameterSets}
-          selectedId={controller.parameterSetId}
+          options={springParameterSets}
+          activeValueId={controller.parameterSetId}
           onChange={(id) => {
             if (id === 'physical' || id === 'frequency' || id === 'period') {
               controller.selectParameterSet(id)

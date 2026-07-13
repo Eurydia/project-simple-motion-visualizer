@@ -91,7 +91,7 @@ function HomePage() {
                   >
                     {icon}
                   </CardContent>
-                  <CardHeader title={appearance.title()} />
+                  <CardHeader title={appearance.title} />
                 </Stack>
               </RouterCardActions>
             </Card>

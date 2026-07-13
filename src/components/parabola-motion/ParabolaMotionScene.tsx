@@ -34,6 +34,7 @@ export const ParabolaMotionScene: FC<{
   const vectorLength = Math.min(90, simulation.velocity * 3)
   return (
     <MotionScene
+      appearance={parabolaAppearance}
       time={time}
       measurements={getParabolaMeasurements(simulation, time)}
     >

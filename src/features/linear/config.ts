@@ -10,8 +10,7 @@ export type LinearFormValues = {
 export type LinearField = keyof LinearFormValues
 export type LinearParameterSetId = 'velocity' | 'endpoints'
 export const linearAppearance: MotionAppearance = {
-  title: m.linear_title,
-  description: m.linear_description,
+  title: m.linear_title(),
   formula: 'x(t) = x_0 + vt',
   color: '#9fa8da',
   light: '#c5cae9',
@@ -23,22 +22,22 @@ export const linearParameterSets: readonly MotionParameterSet<
 >[] = [
   {
     id: 'velocity',
-    label: m.position_velocity,
-    description: m.use_initial_velocity,
+    label: m.position_velocity(),
+    description: m.use_initial_velocity(),
     parameters: [
       {
         key: 'position',
-        label: m.start_position,
+        label: m.start_position(),
         symbol: 'x_0',
-        hint: m.hint_start_position,
+        hint: m.hint_start_position(),
         unit: 'm',
         step: 1,
       },
       {
         key: 'velocity',
-        label: m.velocity,
+        label: m.velocity(),
         symbol: 'v',
-        hint: m.hint_velocity_signed,
+        hint: m.hint_velocity_signed(),
         unit: 'm/s',
         step: 0.5,
       },
@@ -46,30 +45,30 @@ export const linearParameterSets: readonly MotionParameterSet<
   },
   {
     id: 'endpoints',
-    label: m.two_positions,
-    description: m.use_positions_time,
+    label: m.two_positions(),
+    description: m.use_positions_time(),
     parameters: [
       {
         key: 'position',
-        label: m.start_position,
+        label: m.start_position(),
         symbol: 'x_0',
-        hint: m.hint_start_position,
+        hint: m.hint_start_position(),
         unit: 'm',
         step: 1,
       },
       {
         key: 'endPosition',
-        label: m.end_position,
+        label: m.end_position(),
         symbol: 'x_1',
-        hint: m.hint_end_position,
+        hint: m.hint_end_position(),
         unit: 'm',
         step: 1,
       },
       {
         key: 'travelTime',
-        label: m.travel_time,
+        label: m.travel_time(),
         symbol: '\\Delta t',
-        hint: m.hint_travel_time,
+        hint: m.hint_travel_time(),
         unit: 's',
         step: 0.1,
       },

@@ -20,14 +20,14 @@ const MotionNumberField: FC<{
   const helperText =
     typeof error === 'object' && error !== null && 'message' in error
       ? String(error.message)
-      : parameter.hint()
+      : parameter.hint
   return (
     <Box>
       <Stack
         direction="row"
         sx={{ justifyContent: 'space-between', alignItems: 'baseline', mb: 1 }}
       >
-        <Typography sx={{ fontWeight: 700 }}>{parameter.label()}</Typography>
+        <Typography sx={{ fontWeight: 700 }}>{parameter.label}</Typography>
         <Chip
           label={<MathText math={parameter.symbol} />}
           size="small"
@@ -52,7 +52,7 @@ const MotionNumberField: FC<{
           field.handleChange(value === '' ? Number.NaN : Number(value))
         }}
         slotProps={{
-          htmlInput: { step: parameter.step, 'aria-label': parameter.label() },
+          htmlInput: { step: parameter.step },
           input: {
             endAdornment: parameter.unit ? (
               <InputAdornment position="end">{parameter.unit}</InputAdornment>

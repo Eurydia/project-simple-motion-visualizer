@@ -24,8 +24,8 @@ export const CircularMotionForm: FC<{
     <ParameterFormLayout
       selector={
         <ParameterSetSelector
-          sets={circularParameterSets}
-          selectedId={controller.parameterSetId}
+          options={circularParameterSets}
+          activeValueId={controller.parameterSetId}
           onChange={(id) => {
             if (isCircularParameterSetId(id)) controller.selectParameterSet(id)
           }}

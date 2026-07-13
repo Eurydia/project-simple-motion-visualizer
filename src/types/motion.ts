@@ -1,9 +1,9 @@
+import type { LocalizedString } from '#/paraglide/runtime'
+
 export type MotionKind = 'spring' | 'parabola' | 'linear' | 'circular'
 
-export type LocalizedText = () => string
-
 export type MotionAppearance = {
-  title: string
+  title: LocalizedString
   formula: string
   color: string
   light: string
@@ -12,9 +12,9 @@ export type MotionAppearance = {
 
 export type MotionParameter<TFieldName extends string> = {
   key: TFieldName
-  label: LocalizedText
+  label: LocalizedString
   symbol: string
-  hint: LocalizedText
+  hint: LocalizedString
   unit: string
   step: number
 }
@@ -24,8 +24,8 @@ export type MotionParameterSet<
   TFieldName extends string,
 > = {
   id: TSetId
-  label: LocalizedText
-  description: LocalizedText
+  label: LocalizedString
+  description: LocalizedString
   parameters: readonly MotionParameter<TFieldName>[]
 }
 

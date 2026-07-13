@@ -1,7 +1,6 @@
 import type { FC, ReactNode } from 'react'
 import { useId } from 'react'
 import { motion } from 'motion/react'
-import { m } from '../../../paraglide/messages.js'
 import type { MotionAppearance, MotionMeasurement } from '../../../types/motion'
 import { SceneDefinitions } from './SceneDefinitions'
 import { MotionSceneContext } from './MotionSceneContext'
@@ -24,7 +23,6 @@ export const MotionScene: FC<{
       <svg
         viewBox={`0 0 ${sceneTokens.width} ${sceneTokens.height}`}
         role="img"
-        aria-label={`${appearance.title()} — ${m.animation()}`}
         style={{
           display: 'block',
           width: '100%',
