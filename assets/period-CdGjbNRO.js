@@ -1,1 +1,0 @@
-import{l as e}from"./Stack-BtA1L9ZI.js";var t=()=>`Period`,n=()=>`คาบ`,r=((r={},i={})=>(i.locale??e())===`en`?t(r):n(r));export{r as t};
