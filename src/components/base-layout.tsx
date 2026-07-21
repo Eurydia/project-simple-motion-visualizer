@@ -1,3 +1,5 @@
+import { getLocaleFontFamily } from '#/lib/i18n/font-family'
+import { getLocale } from '#/lib/paraglide/runtime'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -17,8 +19,8 @@ export const BaseLayout: FC<{
           <Typography
             variant="h1"
             sx={{
-              fontFamily: 'monospace',
-              fontWeight: 900,
+              fontFamily: getLocaleFontFamily(),
+              fontWeight: 700,
               textTransform: 'capitalize',
               overflowWrap: 'break-word',
             }}

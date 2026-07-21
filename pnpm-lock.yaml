@@ -14,6 +14,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.1
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.7)(supports-color@7.2.0))(@types/react@19.2.17)(react@19.2.7)(supports-color@7.2.0)
+      '@fontsource/mali':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource/roboto':
         specifier: ^5.2.10
         version: 5.2.10
@@ -369,6 +372,9 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
+
+  '@fontsource/mali@5.3.0':
+    resolution: {integrity: sha512-/H7zdnFcBUdLh7mPUCLWfCoQVgtvnVKrlHjknq90kltPvUcu0nC9ybne4z2rzTghV9ez9N7nRDvRZesODB/YbQ==}
 
   '@fontsource/roboto@5.2.10':
     resolution: {integrity: sha512-8HlA5FtSfz//oFSr2eL7GFXAiE7eIkcGOtx7tjsLKq+as702x9+GU7K95iDeWFapHC4M2hv9RrpXKRTGGBI8Zg==}
@@ -2879,6 +2885,8 @@ snapshots:
 
   '@exodus/bytes@1.15.1': {}
 
+  '@fontsource/mali@5.3.0': {}
+
   '@fontsource/roboto@5.2.10': {}
 
   '@humanfs/core@0.19.2':
@@ -4747,7 +4755,8 @@ snapshots:
       picomatch: 4.0.5
       typescript: 6.0.3
 
-  tslib@2.8.1: {}
+  tslib@2.8.1:
+    optional: true
 
   type-check@0.4.0:
     dependencies:
