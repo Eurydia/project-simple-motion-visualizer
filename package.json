@@ -14,7 +14,7 @@
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
-    "deploy-gh": "gh-pages -b gh-pages -d dist/"
+    "deploy-gh-pages": "gh-pages -b gh-pages -d dist/"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

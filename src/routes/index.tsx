@@ -74,15 +74,15 @@ function HomePage() {
             <ThemeProvider theme={theme}>
               <Card
                 elevation={0}
-                sx={{
-                  bgcolor: (t) => t.palette.primary.light,
-                  color: (t) => t.palette.primary.dark,
+                sx={(t) => ({
+                  backgroundColor: t.palette.primary.light,
                   ':hover': {
-                    boxShadow: (t) => t.shadows[8],
+                    boxShadow: t.shadows[8],
                   },
-                }}
+                })}
               >
                 <RouterCardAction
+                  disableRipple
                   to={route}
                   sx={{
                     cursor: 'pointer',
@@ -93,17 +93,19 @@ function HomePage() {
                     direction={{ xs: 'column', md: 'row' }}
                   >
                     <CardContent
-                      sx={{
-                        minHeight: 150,
+                      sx={(t) => ({
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: { xs: 70, md: 92 },
-                      }}
+                        fontSize: t.typography.h1.fontSize,
+                      })}
                     >
                       {icon}
                     </CardContent>
-                    <CardHeader title={appearance.title} />
+                    <CardHeader
+                      title={appearance.title}
+                      slotProps={{ title: { sx: { textAlign: 'center' } } }}
+                    />
                   </Stack>
                 </RouterCardAction>
               </Card>

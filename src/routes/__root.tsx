@@ -1,8 +1,8 @@
-import { RouterLink } from '#/components/router/RouterLink.js'
-import { m } from '#/lib/paraglide/messages.js'
-import { getLocale, setLocale } from '#/lib/paraglide/runtime.js'
-import type { FileRouteTypes } from '#/routeTree.gen.js'
-import { APP_THEME } from '#/theme/app.js'
+import { RouterLink } from '#/components/router/RouterLink'
+import { m } from '#/lib/paraglide/messages'
+import { getLocale, setLocale } from '#/lib/paraglide/runtime'
+import type { FileRouteTypes } from '#/routeTree.gen'
+import { APP_THEME } from '#/theme/app'
 import TranslateIcon from '@mui/icons-material/Translate'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
@@ -33,7 +33,11 @@ const RootComponent: FC = () => {
           direction="row"
           useFlexGap
           spacing={2}
-          sx={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}
+          sx={{
+            flexWrap: 'wrap',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+          }}
         >
           <Stack
             direction="row"
@@ -59,6 +63,8 @@ const RootComponent: FC = () => {
             disableElevation
             disableRipple
             variant="text"
+            color="inherit"
+            size="large"
             startIcon={<TranslateIcon />}
             onClick={() => setLocale(getLocale() === 'en' ? 'th' : 'en')}
           >
