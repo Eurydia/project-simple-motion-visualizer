@@ -1,1 +1,0 @@
-import{l as e}from"./Stack-CA4ToHnI.js";var t=()=>`Period`,n=()=>`คาบ`,r=((r={},i={})=>(i.locale??e())===`en`?t(r):n(r));export{r as t};

@@ -1,0 +1,1 @@
+import{dt as e}from"./Stack-BtxBvDFV.js";import{c as t}from"./MotionScene-BTVeSiP2.js";var n=e(),r=({x1:e,y1:r,x2:i,y2:a,color:o=t.guide,dashed:s=!1,dotted:c=!1,width:l=1})=>(0,n.jsx)(`line`,{x1:e,y1:r,x2:i,y2:a,stroke:o,strokeWidth:l,strokeDasharray:c?`1 6`:s?`7 6`:void 0,strokeLinecap:c?`round`:`butt`});export{r as t};

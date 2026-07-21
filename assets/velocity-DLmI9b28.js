@@ -1,0 +1,1 @@
+import{y as e}from"./Stack-BtxBvDFV.js";var t=()=>`Velocity`,n=()=>`ความเร็ว`,r=((r={},i={})=>(i.locale??e())===`en`?t(r):n(r));export{r as t};
