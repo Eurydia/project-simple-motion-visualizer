@@ -11,7 +11,7 @@ import {
 import type { CircularParameterSetId } from '../features/circular/config'
 import { createCircularSchema } from '../features/circular/schema'
 import { useMotionPlayback } from './use-motion-playback'
-import { useMotionForm } from '#/lib/form-hooks'
+import { useMotionForm } from '#/lib/form/form-hooks'
 
 export const useCircularMotion = () => {
   const [parameterSetId, setParameterSetId] =

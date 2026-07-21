@@ -8,7 +8,7 @@ import { springDefaults, springParameterSets } from '../features/spring/config'
 import type { SpringParameterSetId } from '../features/spring/config'
 import { createSpringSchema } from '../features/spring/schema'
 import { useMotionPlayback } from './use-motion-playback'
-import { useMotionForm } from '#/lib/form-hooks'
+import { useMotionForm } from '#/lib/form/form-hooks'
 
 export const useSpringMotion = () => {
   const [parameterSetId, setParameterSetId] =

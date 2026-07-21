@@ -5,7 +5,7 @@ import {
   getSpringPosition,
 } from '../../features/spring/computation'
 import type { SpringSimulation } from '../../features/spring/computation'
-import { m } from '../../paraglide/messages.js'
+import { m } from '../../lib/paraglide/messages.js'
 import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
 import { MotionDot } from '../motion-graphics/motion-scene/MotionDot'
 import { MotionLabel } from '../motion-graphics/motion-scene/MotionLabel'

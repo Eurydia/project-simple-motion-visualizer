@@ -8,7 +8,7 @@ import { linearDefaults, linearParameterSets } from '../features/linear/config'
 import type { LinearParameterSetId } from '../features/linear/config'
 import { createLinearSchema } from '../features/linear/schema'
 import { useMotionPlayback } from './use-motion-playback'
-import { useMotionForm } from '#/lib/form-hooks'
+import { useMotionForm } from '#/lib/form/form-hooks'
 
 export const useLinearMotion = () => {
   const [parameterSetId, setParameterSetId] =

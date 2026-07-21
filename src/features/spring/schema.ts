@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { m } from '../../paraglide/messages.js'
+import { m } from '../../lib/paraglide/messages.js'
 import type { SpringFormValues, SpringParameterSetId } from './config'
 
 const number = (label: string) =>

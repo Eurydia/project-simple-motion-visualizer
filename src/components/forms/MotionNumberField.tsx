@@ -6,7 +6,7 @@ import { Box, Stack } from '@mui/system'
 import Typography from '@mui/material/Typography'
 import type { FC } from 'react'
 import { MathText } from '../MathText'
-import { useFieldContext } from '#/lib/form-contexts'
+import { useFieldContext } from '#/lib/form/form-contexts'
 
 export const MotionNumberField: FC<{
   parameter: MotionParameter<string>

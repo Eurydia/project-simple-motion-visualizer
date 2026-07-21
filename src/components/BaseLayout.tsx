@@ -11,23 +11,27 @@ export const BaseLayout: FC<{
   return (
     <>
       <Box
-        sx={{ bgcolor: color, color: '#102027', py: { xs: 4, md: 5 }, px: 2 }}
+        sx={{ backgroundColor: color, paddingY: { xs: 4, md: 5 }, paddingX: 2 }}
       >
-        <Typography
-          variant="h1"
-          sx={{
-            fontFamily: 'monospace',
-            fontWeight: 900,
-            textTransform: 'capitalize',
-            maxWidth: 'lg',
-            mx: 'auto',
-            overflowWrap: 'break-word',
-          }}
-        >
-          {title}
-        </Typography>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h1"
+            sx={{
+              fontFamily: 'monospace',
+              fontWeight: 900,
+              textTransform: 'capitalize',
+              overflowWrap: 'break-word',
+            }}
+          >
+            {title}
+          </Typography>
+        </Container>
       </Box>
-      <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
+      <Container
+        component="main"
+        maxWidth="lg"
+        sx={{ paddingY: { xs: 6, md: 8 } }}
+      >
         {children}
       </Container>
     </>

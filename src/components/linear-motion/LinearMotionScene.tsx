@@ -4,7 +4,7 @@ import {
   getLinearPosition,
 } from '../../features/linear/computation'
 import type { LinearSimulation } from '../../features/linear/computation'
-import { m } from '../../paraglide/messages.js'
+import { m } from '../../lib/paraglide/messages.js'
 import { formatMeasurement } from '../motion-graphics/motion-scene/format-measurement'
 import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
 import { MotionDot } from '../motion-graphics/motion-scene/MotionDot'

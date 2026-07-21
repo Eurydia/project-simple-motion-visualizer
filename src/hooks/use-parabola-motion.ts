@@ -11,7 +11,7 @@ import {
 import type { ParabolaParameterSetId } from '../features/parabola/config'
 import { createParabolaSchema } from '../features/parabola/schema'
 import { useMotionPlayback } from './use-motion-playback'
-import { useMotionForm } from '#/lib/form-hooks'
+import { useMotionForm } from '#/lib/form/form-hooks'
 
 export const useParabolaMotion = () => {
   const [parameterSetId, setParameterSetId] =

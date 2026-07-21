@@ -12,7 +12,7 @@ const config = defineConfig({
     tanstackRouter({ target: 'react', autoCodeSplitting: true }),
     paraglideVitePlugin({
       project: './project.inlang',
-      outdir: './src/paraglide',
+      outdir: './src/lib/paraglide',
       strategy: ['localStorage', 'baseLocale'],
     }),
     viteReact(),

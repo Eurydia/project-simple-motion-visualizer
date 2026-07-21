@@ -1,4 +1,4 @@
-import { m } from '../../paraglide/messages.js'
+import { m } from '../../lib/paraglide/messages.js'
 import type { MotionAppearance, MotionParameterSet } from '../../types/motion'
 
 export type LinearFormValues = {

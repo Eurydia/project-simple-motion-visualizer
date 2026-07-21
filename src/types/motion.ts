@@ -1,4 +1,4 @@
-import type { LocalizedString } from '#/paraglide/runtime'
+import type { LocalizedString } from '#/lib/paraglide/runtime'
 
 export type MotionKind = 'spring' | 'parabola' | 'linear' | 'circular'
 
