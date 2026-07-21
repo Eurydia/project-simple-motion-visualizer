@@ -1,14 +1,14 @@
-import type { FC } from 'react'
+import type { CircularSimulation } from '#/features/circular/computation'
 import {
   getCircularMeasurements,
   getCircularPosition,
-} from '../../features/circular/computation'
-import type { CircularSimulation } from '../../features/circular/computation'
-import { MotionArrow } from '../scene/MotionArrow'
-import { MotionDot } from '../scene/MotionDot'
-import { MotionLabel } from '../scene/MotionLabel'
-import { MotionScene } from '../scene/MotionScene'
+} from '#/features/circular/computation'
 import { useTheme } from '@mui/material/styles'
+import type { FC } from 'react'
+import { MotionArrow } from '../scene-elements/MotionArrow'
+import { MotionDot } from '../scene-elements/MotionDot'
+import { MotionLabel } from '../scene-elements/MotionLabel'
+import { MotionScene } from '../scene-elements/MotionScene'
 
 export const CircularMotionScene: FC<{
   simulation: CircularSimulation

@@ -1,9 +1,9 @@
 import type { FC } from 'react'
-import { CircularMotionScene } from '../../components/circular-motion/CircularMotionScene'
-import { MotionLabLayout } from '../../components/layout/MotionLabLayout'
-import { useCircularMotion } from '../../hooks/use-circular-motion'
 import { circularAppearance } from './config'
 import { CircularMotionForm } from './CircularMotionForm'
+import { useCircularMotion } from '#/hooks/use-circular-motion'
+import { MotionLabLayout } from '#/components/layout/MotionLabLayout'
+import { CircularMotionScene } from '#/components/motionlabs/scenes/CircularMotionScene'
 
 export const CircularMotionLab: FC = () => {
   const controller = useCircularMotion()

@@ -1,17 +1,17 @@
 import { animated, useSpring } from '@react-spring/web'
 import type { FC } from 'react'
+import { useTheme } from '@mui/material/styles'
 import {
   getParabolaFlightTime,
   getParabolaMeasurements,
   getParabolaPosition,
-} from '../../../features/parabola/computation'
-import type { ParabolaSimulation } from '../../../features/parabola/computation'
-import { MotionArrow } from '../../motion-graphics/motion-scene/MotionArrow'
-import { MotionDot } from '../../motion-graphics/motion-scene/MotionDot'
-import { MotionLabel } from '../../motion-graphics/motion-scene/MotionLabel'
-import { MotionLine } from '../../motion-graphics/motion-scene/MotionLine'
-import { MotionScene } from '../../motion-graphics/motion-scene/MotionScene'
-import { useTheme } from '@mui/material/styles'
+} from '#/features/parabola/computation'
+import type { ParabolaSimulation } from '#/features/parabola/computation'
+import { MotionArrow } from '../scene-elements/MotionArrow'
+import { MotionDot } from '../scene-elements/MotionDot'
+import { MotionLabel } from '../scene-elements/MotionLabel'
+import { MotionLine } from '../scene-elements/MotionLine'
+import { MotionScene } from '../scene-elements/MotionScene'
 
 export const ParabolaMotionScene: FC<{
   simulation: ParabolaSimulation

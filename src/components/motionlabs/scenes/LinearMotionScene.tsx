@@ -1,16 +1,16 @@
-import type { FC } from 'react'
+import type { LinearSimulation } from '#/features/linear/computation'
 import {
   getLinearMeasurements,
   getLinearPosition,
-} from '../../features/linear/computation'
-import type { LinearSimulation } from '../../features/linear/computation'
-import { m } from '../../lib/paraglide/messages.js'
-import { formatMeasurement } from '../scene/format-measurement.js'
-import { MotionArrow } from '../scene/MotionArrow.js'
-import { MotionDot } from '../scene/MotionDot.js'
-import { MotionLabel } from '../scene/MotionLabel.js'
-import { MotionLine } from '../scene/MotionLine.js'
-import { MotionScene } from '../scene/MotionScene.js'
+} from '#/features/linear/computation'
+import { m } from '#/lib/paraglide/messages'
+import type { FC } from 'react'
+import { formatMeasurement } from '../scene-elements/format-measurement'
+import { MotionArrow } from '../scene-elements/MotionArrow'
+import { MotionDot } from '../scene-elements/MotionDot'
+import { MotionLabel } from '../scene-elements/MotionLabel'
+import { MotionLine } from '../scene-elements/MotionLine'
+import { MotionScene } from '../scene-elements/MotionScene'
 
 export const LinearMotionScene: FC<{
   simulation: LinearSimulation

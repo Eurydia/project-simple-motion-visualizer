@@ -7,6 +7,7 @@ import '@fontsource/mali/400.css'
 import '@fontsource/mali/500.css'
 import '@fontsource/mali/700.css'
 import { createTheme, responsiveFontSizes } from '@mui/material/styles'
+import { fontFamily } from '@mui/system'
 
 export const APP_THEME = responsiveFontSizes(
   createTheme({
@@ -15,5 +16,17 @@ export const APP_THEME = responsiveFontSizes(
       background: { default: '#fafafa', paper: '#ffffff' },
     },
     shape: { borderRadius: 8 },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          'html:lang(en-US)': {
+            fontFamily: 'monospace',
+          },
+          'html:lang(th-TH)': {
+            fontFamily: ["'Mali'", 'serif'].join(','),
+          },
+        },
+      },
+    },
   }),
 )

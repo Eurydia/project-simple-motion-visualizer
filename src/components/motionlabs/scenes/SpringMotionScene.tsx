@@ -1,17 +1,17 @@
-import { animated, useSpring } from '@react-spring/web'
-import type { FC } from 'react'
+import type { SpringSimulation } from '#/features/spring/computation'
 import {
   getSpringMeasurements,
   getSpringPosition,
-} from '../../../features/spring/computation.js'
-import type { SpringSimulation } from '../../../features/spring/computation.js'
-import { m } from '../../../lib/paraglide/messages.js'
-import { MotionArrow } from '../../motion-graphics/motion-scene/MotionArrow.js'
-import { MotionDot } from '../../motion-graphics/motion-scene/MotionDot.js'
-import { MotionLabel } from '../../motion-graphics/motion-scene/MotionLabel.js'
-import { MotionLine } from '../../motion-graphics/motion-scene/MotionLine.js'
-import { MotionScene } from '../../motion-graphics/motion-scene/MotionScene.js'
+} from '#/features/spring/computation'
+import { m } from '#/lib/paraglide/messages'
 import { useTheme } from '@mui/material/styles'
+import { animated, useSpring } from '@react-spring/web'
+import type { FC } from 'react'
+import { MotionArrow } from '../scene-elements/MotionArrow'
+import { MotionDot } from '../scene-elements/MotionDot'
+import { MotionLabel } from '../scene-elements/MotionLabel'
+import { MotionLine } from '../scene-elements/MotionLine'
+import { MotionScene } from '../scene-elements/MotionScene'
 
 export const SpringMotionScene: FC<{
   simulation: SpringSimulation

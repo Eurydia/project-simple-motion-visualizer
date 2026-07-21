@@ -1,22 +1,26 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import CssBaseline from '@mui/material/CssBaseline'
-import ThemeProvider from '@mui/system/ThemeProvider'
-import type { FC } from 'react'
-import { getLocale, setLocale } from '../lib/paraglide/runtime.js'
-import { APP_THEME } from '../theme/app.js'
-import { m } from '#/lib/paraglide/messages.js'
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
-import Stack from '@mui/material/Stack'
 import { RouterLink } from '#/components/router/RouterLink.js'
+import { m } from '#/lib/paraglide/messages.js'
+import { getLocale, setLocale } from '#/lib/paraglide/runtime.js'
+import type { FileRouteTypes } from '#/routeTree.gen.js'
+import { APP_THEME } from '#/theme/app.js'
+import TranslateIcon from '@mui/icons-material/Translate'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import CssBaseline from '@mui/material/CssBaseline'
 import Divider from '@mui/material/Divider'
+import Stack from '@mui/material/Stack'
+import ThemeProvider from '@mui/system/ThemeProvider'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
+import type { FC } from 'react'
 
-const NAV_ITEMS = [
-  [m.nav_spring, '/spring'],
-  [m.nav_parabola, '/parabola'],
-  [m.nav_linear, '/linear'],
-  [m.nav_circular, '/circular'],
-] as const
+const NAV_ITEMS: ReadonlyArray<
+  Readonly<{ label: string; to: FileRouteTypes['to'] }>
+> = [
+  { label: m.nav_spring(), to: '/motionlabs/spring' },
+  { label: m.nav_parabola(), to: '/motionlabs/parabola' },
+  { label: m.nav_linear(), to: '/motionlabs/linear' },
+  { label: m.nav_circular(), to: '/motionlabs/circular' },
+]
 
 const RootComponent: FC = () => {
   document.documentElement.lang = getLocale()
@@ -40,23 +44,26 @@ const RootComponent: FC = () => {
             <RouterLink sx={{ cursor: 'pointer' }} color="textPrimary" to="/">
               {m.nav_home()}
             </RouterLink>
-            {NAV_ITEMS.map(([label, to]) => (
+            {NAV_ITEMS.map(({ label, to }) => (
               <RouterLink
                 key={to}
                 to={to}
                 color="textPrimary"
                 sx={{ cursor: 'pointer' }}
               >
-                {label()}
+                {label}
               </RouterLink>
             ))}
           </Stack>
-          <Typography
-            sx={{ cursor: 'pointer' }}
+          <Button
+            disableElevation
+            disableRipple
+            variant="text"
+            startIcon={<TranslateIcon />}
             onClick={() => setLocale(getLocale() === 'en' ? 'th' : 'en')}
           >
             {getLocale() === 'en' ? m.thai() : m.english()}
-          </Typography>
+          </Button>
         </Stack>
       </Container>
       <Outlet />
