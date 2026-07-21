@@ -3,14 +3,14 @@ import type { FC } from 'react'
 import {
   getSpringMeasurements,
   getSpringPosition,
-} from '../../features/spring/computation'
-import type { SpringSimulation } from '../../features/spring/computation'
-import { m } from '../../lib/paraglide/messages.js'
-import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
-import { MotionDot } from '../motion-graphics/motion-scene/MotionDot'
-import { MotionLabel } from '../motion-graphics/motion-scene/MotionLabel'
-import { MotionLine } from '../motion-graphics/motion-scene/MotionLine'
-import { MotionScene } from '../motion-graphics/motion-scene/MotionScene'
+} from '../../../features/spring/computation.js'
+import type { SpringSimulation } from '../../../features/spring/computation.js'
+import { m } from '../../../lib/paraglide/messages.js'
+import { MotionArrow } from '../../motion-graphics/motion-scene/MotionArrow.js'
+import { MotionDot } from '../../motion-graphics/motion-scene/MotionDot.js'
+import { MotionLabel } from '../../motion-graphics/motion-scene/MotionLabel.js'
+import { MotionLine } from '../../motion-graphics/motion-scene/MotionLine.js'
+import { MotionScene } from '../../motion-graphics/motion-scene/MotionScene.js'
 import { useTheme } from '@mui/material/styles'
 
 export const SpringMotionScene: FC<{

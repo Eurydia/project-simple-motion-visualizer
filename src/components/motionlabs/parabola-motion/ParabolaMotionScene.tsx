@@ -4,13 +4,13 @@ import {
   getParabolaFlightTime,
   getParabolaMeasurements,
   getParabolaPosition,
-} from '../../features/parabola/computation'
-import type { ParabolaSimulation } from '../../features/parabola/computation'
-import { MotionArrow } from '../motion-graphics/motion-scene/MotionArrow'
-import { MotionDot } from '../motion-graphics/motion-scene/MotionDot'
-import { MotionLabel } from '../motion-graphics/motion-scene/MotionLabel'
-import { MotionLine } from '../motion-graphics/motion-scene/MotionLine'
-import { MotionScene } from '../motion-graphics/motion-scene/MotionScene'
+} from '../../../features/parabola/computation'
+import type { ParabolaSimulation } from '../../../features/parabola/computation'
+import { MotionArrow } from '../../motion-graphics/motion-scene/MotionArrow'
+import { MotionDot } from '../../motion-graphics/motion-scene/MotionDot'
+import { MotionLabel } from '../../motion-graphics/motion-scene/MotionLabel'
+import { MotionLine } from '../../motion-graphics/motion-scene/MotionLine'
+import { MotionScene } from '../../motion-graphics/motion-scene/MotionScene'
 import { useTheme } from '@mui/material/styles'
 
 export const ParabolaMotionScene: FC<{
