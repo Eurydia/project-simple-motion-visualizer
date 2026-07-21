@@ -8,7 +8,7 @@ import { m } from '#/lib/paraglide/messages.js'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
-import { RouterLink } from '#/components/RouterLink.js'
+import { RouterLink } from '#/components/router/RouterLink.js'
 import Divider from '@mui/material/Divider'
 
 const NAV_ITEMS = [

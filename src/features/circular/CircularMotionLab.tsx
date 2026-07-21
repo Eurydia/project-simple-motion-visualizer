@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { CircularMotionScene } from '../../components/circular-motion/CircularMotionScene'
-import { MotionLabLayout } from '../../components/MotionLabLayout'
+import { MotionLabLayout } from '../../components/layout/MotionLabLayout'
 import { useCircularMotion } from '../../hooks/use-circular-motion'
 import { circularAppearance } from './config'
 import { CircularMotionForm } from './CircularMotionForm'

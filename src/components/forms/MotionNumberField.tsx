@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField'
 import { Box, Stack } from '@mui/system'
 import Typography from '@mui/material/Typography'
 import type { FC } from 'react'
-import { MathText } from '../MathText'
+import { MathText } from '../motionlabs/MathText'
 import { useFieldContext } from '#/lib/form/form-contexts'
 
 export const MotionNumberField: FC<{

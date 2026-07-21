@@ -2,7 +2,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import type { FC } from 'react'
-import type { MotionAppearance } from '../types/motion'
+import type { MotionAppearance } from '../../types/motion'
 import { MathText } from './MathText'
 
 export const FormulaPanel: FC<{ appearance: MotionAppearance }> = ({

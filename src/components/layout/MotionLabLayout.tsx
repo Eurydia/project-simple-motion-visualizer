@@ -1,10 +1,10 @@
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import type { FC, ReactNode } from 'react'
-import type { MotionAppearance } from '../types/motion'
-import { BaseLayout } from './layout/base-layout'
-import { FormulaPanel } from './FormulaPanel'
-import { PlaybackPanel } from './PlaybackPanel'
+import type { MotionAppearance } from '../../types/motion'
+import { BaseLayout } from './base-layout'
+import { FormulaPanel } from '../motionlabs/FormulaPanel'
+import { PlaybackPanel } from '../motionlabs/PlaybackPanel'
 import { useTheme } from '@mui/material/styles'
 
 export const MotionLabLayout: FC<{

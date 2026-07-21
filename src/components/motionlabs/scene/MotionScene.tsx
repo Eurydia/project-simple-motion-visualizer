@@ -4,7 +4,7 @@ import { useId } from 'react'
 import type { MotionMeasurement } from '../../../types/motion'
 import { SceneDefinitions } from './SceneDefinitions'
 import { MotionSceneContext } from './MotionSceneContext'
-import { SceneMeasurements } from './SceneMeasurements'
+import { SceneMeasurements } from '../motion-graphics/motion-scene/SceneMeasurements'
 import { sceneTokens } from './scene-tokens'
 import { useTheme } from '@mui/material/styles'
 

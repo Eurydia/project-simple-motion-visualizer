@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { ParabolaMotionScene } from '../../components/motionlabs/parabola-motion/ParabolaMotionScene'
-import { MotionLabLayout } from '../../components/MotionLabLayout'
+import { MotionLabLayout } from '../../components/layout/MotionLabLayout'
 import { useParabolaMotion } from '../../hooks/use-parabola-motion'
 import { parabolaAppearance } from './config'
 import { ParabolaMotionForm } from './ParabolaMotionForm'

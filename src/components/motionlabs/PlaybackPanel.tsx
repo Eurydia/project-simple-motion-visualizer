@@ -12,8 +12,8 @@ import Slider from '@mui/material/Slider'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import type { FC, ReactNode } from 'react'
-import { formatTimelineTime } from '../helpers/playback'
-import { m } from '../lib/paraglide/messages.js'
+import { formatTimelineTime } from '../../helpers/playback.js'
+import { m } from '../../lib/paraglide/messages.js'
 
 export const PlaybackPanel: FC<{
   visualization: ReactNode

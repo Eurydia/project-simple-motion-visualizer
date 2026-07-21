@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { LinearMotionScene } from '../../components/linear-motion/LinearMotionScene'
-import { MotionLabLayout } from '../../components/MotionLabLayout'
+import { MotionLabLayout } from '../../components/layout/MotionLabLayout'
 import { useLinearMotion } from '../../hooks/use-linear-motion'
 import { linearAppearance } from './config'
 import { LinearMotionForm } from './LinearMotionForm'

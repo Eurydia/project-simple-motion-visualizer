@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { SpringMotionScene } from '../../components/motionlabs/spring-motion/SpringMotionScene'
-import { MotionLabLayout } from '../../components/MotionLabLayout'
+import { MotionLabLayout } from '../../components/layout/MotionLabLayout'
 import { useSpringMotion } from '../../hooks/use-spring-motion'
 import { SpringMotionForm } from './SpringMotionForm'
 import { springAppearance } from './config'
