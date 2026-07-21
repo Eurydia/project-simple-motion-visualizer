@@ -20,12 +20,12 @@ import { RouterCardAction } from '#/components/RouterCardAction.js'
 import type { FileRouteTypes } from '#/routeTree.gen.js'
 import { ThemeProvider } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
-import { SPRING_THEME } from '#/theme/spring.js'
-import { PARABOLA_THEME } from '#/theme/parabola.js'
-import { LINEAR_THEME } from '#/theme/linear.js'
-import { CIRCULAR_THEME } from '#/theme/circular.js'
+import { SPRING_THEME } from '#/theme/motionlabs/spring.js'
+import { PARABOLA_THEME } from '#/theme/motionlabs/parabola.js'
+import { LINEAR_THEME } from '#/theme/motionlabs/linear.js'
+import { CIRCULAR_THEME } from '#/theme/motionlabs/circular.js'
 
-const motionCards: readonly {
+const MOTION_CARDS: readonly {
   id: MotionKind
   route: FileRouteTypes['to']
   appearance: MotionAppearance
@@ -34,21 +34,21 @@ const motionCards: readonly {
 }[] = [
   {
     id: 'spring',
-    route: '/spring',
+    route: '/motionlabs/spring',
     appearance: springAppearance,
     icon: <WavesRounded fontSize="inherit" />,
     theme: SPRING_THEME,
   },
   {
     id: 'parabola',
-    route: '/parabola',
+    route: '/motionlabs/parabola',
     appearance: parabolaAppearance,
     icon: <ShowChartRounded fontSize="inherit" />,
     theme: PARABOLA_THEME,
   },
   {
     id: 'linear',
-    route: '/linear',
+    route: '/motionlabs/linear',
     appearance: linearAppearance,
     icon: (
       <HeightRounded fontSize="inherit" sx={{ transform: 'rotate(90deg)' }} />
@@ -57,7 +57,7 @@ const motionCards: readonly {
   },
   {
     id: 'circular',
-    route: '/circular',
+    route: '/motionlabs/circular',
     appearance: circularAppearance,
     icon: <RotateRightRounded fontSize="inherit" />,
     theme: CIRCULAR_THEME,
@@ -69,7 +69,7 @@ function HomePage() {
   return (
     <BaseLayout title={m.app_title()} color="#81d4fa">
       <Grid container spacing={4}>
-        {motionCards.map(({ theme, id, route, appearance, icon }) => (
+        {MOTION_CARDS.map(({ theme, id, route, appearance, icon }) => (
           <Grid key={id} size={{ xs: 12, md: 6 }}>
             <ThemeProvider theme={theme}>
               <Card

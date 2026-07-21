@@ -1,9 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { LinearMotionLab } from '../features/linear/LinearMotionLab'
+import { LinearMotionLab } from '../../features/linear/LinearMotionLab'
 import { ThemeProvider } from '@mui/system'
-import { LINEAR_THEME } from '#/theme/linear'
+import { LINEAR_THEME } from '#/theme/motionlabs/linear'
 
-export const Route = createFileRoute('/linear')({ component: RouteComponent })
+export const Route = createFileRoute('/motionlabs/linear')({
+  component: RouteComponent,
+})
 
 function RouteComponent() {
   return (

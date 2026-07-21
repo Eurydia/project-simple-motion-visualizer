@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles'
-import { APP_THEME } from './app'
+import { APP_THEME } from '../app'
 
 export const PARABOLA_THEME = createTheme(APP_THEME, {
   palette: {
