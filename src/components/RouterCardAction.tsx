@@ -1,4 +1,4 @@
-import CardActions from '@mui/material/CardActions'
+import CardActionArea from '@mui/material/CardActionArea'
 import { createLink } from '@tanstack/react-router'
 
-export const RouterCardActions = createLink(CardActions)
+export const RouterCardAction = createLink(CardActionArea)

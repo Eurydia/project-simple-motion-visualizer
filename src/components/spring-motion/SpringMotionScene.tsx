@@ -1,5 +1,5 @@
+import { animated, useSpring } from '@react-spring/web'
 import type { FC } from 'react'
-import { motion } from 'motion/react'
 import {
   getSpringMeasurements,
   getSpringPosition,
@@ -29,6 +29,11 @@ export const SpringMotionScene: FC<{
     const py = y + (index === 0 || index === 18 ? 0 : index % 2 ? -13 : 13)
     return `${px},${py}`
   }).join(' ')
+
+  const springShape = useSpring({
+    to: { points },
+    immediate: true,
+  })
 
   const t = useTheme()
   return (
@@ -70,14 +75,11 @@ export const SpringMotionScene: FC<{
         centered
       />
       <rect x={wall - 8} y={y - 70} width="8" height="140" fill="#cfd8dc" />
-      <motion.polyline
-        initial={false}
-        animate={{ points }}
-        transition={{ duration: 0 }}
+      <animated.polyline
+        points={springShape.points}
         fill="none"
         stroke={t.palette.primary.dark}
         strokeWidth="3"
-        points={points}
       />
       <MotionLine x1={equilibrium} y1={y} x2={equilibrium} y2={y + 54} dotted />
       <MotionLine x1={x} y1={y + 13} x2={x} y2={y + 54} dotted />

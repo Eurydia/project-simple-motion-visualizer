@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import type { useLinearMotion } from '../../hooks/use-linear-motion'
 import { ParameterFormLayout } from '../../components/forms/ParameterFormLayout'
 import { ParameterSetSelector } from '../../components/forms/ParameterSetSelector'
-import { linearAppearance, linearParameterSets } from './config'
+import { linearParameterSets } from './config'
 import type { LinearParameterSetId } from './config'
 
 const isLinearParameterSetId = (value: string): value is LinearParameterSetId =>

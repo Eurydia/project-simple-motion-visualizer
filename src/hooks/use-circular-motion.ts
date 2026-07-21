@@ -1,5 +1,5 @@
 import { useSelector } from '@tanstack/react-form'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import {
   createCircularSimulation,
   getCircularDuration,
@@ -29,13 +29,11 @@ export const useCircularMotion = () => {
   const lastValid = useRef(
     createCircularSimulation('angular', circularDefaults),
   )
-  useEffect(() => {
-    if (isValid) {
-      lastValid.current = createCircularSimulation(parameterSetId, values)
-    }
-  }, [isValid])
-
-  const playback = useMotionPlayback(getCircularDuration(lastValid.current))
+  if (isValid) {
+    lastValid.current = createCircularSimulation(parameterSetId, values)
+  }
+  const simulation = lastValid.current
+  const playback = useMotionPlayback(getCircularDuration(simulation))
   const selectParameterSet = (nextId: CircularParameterSetId) => {
     setParameterSetId(nextId)
     form.reset(circularDefaults)
@@ -55,8 +53,8 @@ export const useCircularMotion = () => {
     parameterSetId,
     parameterSets: circularParameterSets,
     selectParameterSet,
-    simulation: lastValid.current,
-    duration: getCircularDuration(lastValid.current),
+    simulation,
+    duration: getCircularDuration(simulation),
     reset,
     ...playback,
   }

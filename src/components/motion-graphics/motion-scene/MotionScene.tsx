@@ -1,6 +1,6 @@
+import { animated, useSpring } from '@react-spring/web'
 import type { FC, ReactNode } from 'react'
 import { useId } from 'react'
-import { motion } from 'motion/react'
 import type { MotionMeasurement } from '../../../types/motion'
 import { SceneDefinitions } from './SceneDefinitions'
 import { MotionSceneContext } from './MotionSceneContext'
@@ -17,6 +17,12 @@ export const MotionScene: FC<{
   const arrowMarkerId = `motion-arrow-${instanceId}`
   const glowFilterId = `motion-glow-${instanceId}`
   const t = useTheme()
+  const entrance = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { duration: 180 },
+  })
+
   return (
     <MotionSceneContext.Provider value={{ arrowMarkerId, glowFilterId }}>
       <svg
@@ -39,13 +45,7 @@ export const MotionScene: FC<{
           height={sceneTokens.height}
           fill={`url(#motion-grid-${instanceId})`}
         />
-        <motion.g
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.18 }}
-        >
-          {props.children}
-        </motion.g>
+        <animated.g style={entrance}>{props.children}</animated.g>
         <SceneMeasurements
           color={t.palette.primary.dark}
           time={props.time}

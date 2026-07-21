@@ -1,5 +1,5 @@
+import { animated, useSpring } from '@react-spring/web'
 import type { FC } from 'react'
-import { motion } from 'motion/react'
 import {
   getParabolaFlightTime,
   getParabolaMeasurements,
@@ -34,6 +34,11 @@ export const ParabolaMotionScene: FC<{
   const vectorLength = Math.min(90, simulation.velocity * 3)
 
   const t = useTheme()
+  const trajectoryEntrance = useSpring({
+    from: { pathLength: 0 },
+    to: { pathLength: 1 },
+    config: { duration: 450 },
+  })
 
   return (
     <MotionScene
@@ -42,10 +47,8 @@ export const ParabolaMotionScene: FC<{
     >
       <MotionArrow x1={originX} y1={groundY} x2={744} y2={groundY} label="x" />
       <MotionArrow x1={originX} y1={groundY} x2={originX} y2={56} label="y" />
-      <motion.polyline
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 0.45 }}
+      <animated.polyline
+        pathLength={trajectoryEntrance.pathLength}
         fill="none"
         stroke={t.palette.primary.dark}
         strokeWidth="2"

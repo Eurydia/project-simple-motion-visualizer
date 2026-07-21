@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import type { useParabolaMotion } from '../../hooks/use-parabola-motion'
 import { ParameterFormLayout } from '../../components/forms/ParameterFormLayout'
 import { ParameterSetSelector } from '../../components/forms/ParameterSetSelector'
-import { parabolaAppearance, parabolaParameterSets } from './config'
+import { parabolaParameterSets } from './config'
 import type { ParabolaParameterSetId } from './config'
 
 const isParabolaParameterSetId = (

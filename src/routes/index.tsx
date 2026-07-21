@@ -16,9 +16,9 @@ import { parabolaAppearance } from '../features/parabola/config'
 import { springAppearance } from '../features/spring/config'
 import { m } from '../paraglide/messages.js'
 import type { MotionAppearance, MotionKind } from '../types/motion'
-import { RouterCardActions } from '#/components/RouterCardAction.js'
+import { RouterCardAction } from '#/components/RouterCardAction.js'
 import type { FileRouteTypes } from '#/routeTree.gen.js'
-import { ThemeProvider } from '@emotion/react'
+import { ThemeProvider } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
 import { SPRING_THEME } from '#/theme/spring.js'
 import { PARABOLA_THEME } from '#/theme/parabola.js'
@@ -82,7 +82,7 @@ function HomePage() {
                   },
                 }}
               >
-                <RouterCardActions
+                <RouterCardAction
                   to={route}
                   sx={{
                     cursor: 'pointer',
@@ -105,7 +105,7 @@ function HomePage() {
                     </CardContent>
                     <CardHeader title={appearance.title} />
                   </Stack>
-                </RouterCardActions>
+                </RouterCardAction>
               </Card>
             </ThemeProvider>
           </Grid>

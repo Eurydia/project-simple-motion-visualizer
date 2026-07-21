@@ -1,5 +1,5 @@
 import { useSelector } from '@tanstack/react-form'
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import {
   createSpringSimulation,
   getSpringDuration,
@@ -30,18 +30,18 @@ export const useSpringMotion = () => {
   const simulation = lastValid.current
   const playback = useMotionPlayback(getSpringDuration(simulation))
 
-  const selectParameterSet = useCallback((nextId: SpringParameterSetId) => {
+  const selectParameterSet = (nextId: SpringParameterSetId) => {
     setParameterSetId(nextId)
     form.reset(springDefaults)
     lastValid.current = createSpringSimulation(nextId, springDefaults)
     playback.resetPlayback()
-  }, [])
+  }
 
-  const reset = useCallback(() => {
+  const reset = () => {
     form.reset(springDefaults)
     lastValid.current = createSpringSimulation(parameterSetId, springDefaults)
     playback.resetPlayback()
-  }, [])
+  }
 
   return {
     form,

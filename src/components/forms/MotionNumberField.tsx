@@ -46,7 +46,7 @@ export const MotionNumberField: FC<{
           field.handleChange(value === '' ? Number.NaN : Number(value))
         }}
         slotProps={{
-          htmlInput: { step: parameter.step },
+          htmlInput: { step: parameter.step, 'aria-label': parameter.label },
           input: {
             endAdornment: parameter.unit ? (
               <InputAdornment position="end">{parameter.unit}</InputAdornment>

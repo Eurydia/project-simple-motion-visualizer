@@ -17,6 +17,7 @@ export const ParameterSetSelector: FC<{
             disableElevation
             key={opt.id}
             variant="contained"
+            aria-pressed={selected}
             onClick={() => {
               if (props.activeValueId !== opt.id) {
                 props.onChange(opt.id)

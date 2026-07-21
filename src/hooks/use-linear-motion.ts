@@ -1,5 +1,5 @@
 import { useSelector } from '@tanstack/react-form'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import {
   createLinearSimulation,
   getLinearDuration,
@@ -27,13 +27,11 @@ export const useLinearMotion = () => {
   const isValid = useSelector(form.store, (state) => state.isValid)
   const lastValid = useRef(createLinearSimulation('velocity', linearDefaults))
 
-  useEffect(() => {
-    if (isValid) {
-      lastValid.current = createLinearSimulation(parameterSetId, values)
-    }
-  }, [isValid])
-
-  const playback = useMotionPlayback(getLinearDuration(lastValid.current))
+  if (isValid) {
+    lastValid.current = createLinearSimulation(parameterSetId, values)
+  }
+  const simulation = lastValid.current
+  const playback = useMotionPlayback(getLinearDuration(simulation))
   const selectParameterSet = (nextId: LinearParameterSetId) => {
     setParameterSetId(nextId)
     form.reset(linearDefaults)
@@ -50,8 +48,8 @@ export const useLinearMotion = () => {
     parameterSetId,
     parameterSets: linearParameterSets,
     selectParameterSet,
-    simulation: lastValid.current,
-    duration: getLinearDuration(lastValid.current),
+    simulation,
+    duration: getLinearDuration(simulation),
     reset,
     ...playback,
   }

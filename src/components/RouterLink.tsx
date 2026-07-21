@@ -1,4 +1,4 @@
-import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
 import { createLink } from '@tanstack/react-router'
 
-export const RouterLink = createLink(Typography)
+export const RouterLink = createLink(Link)
