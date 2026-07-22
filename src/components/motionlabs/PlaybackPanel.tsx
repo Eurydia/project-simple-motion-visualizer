@@ -34,7 +34,10 @@ export const PlaybackPanel: FC<{
   onStepFrame,
   onReset,
 }) => (
-  <Card variant="outlined" sx={{ padding: 2 }}>
+  <Card
+    variant="outlined"
+    sx={{ backgroundColor: 'rgba(255, 254, 249, 0.84)', padding: 2 }}
+  >
     <Stack spacing={2}>
       <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
         <Button
@@ -42,9 +45,7 @@ export const PlaybackPanel: FC<{
           disableElevation
           startIcon={playing ? <PauseRounded /> : <PlayArrowRounded />}
           onClick={() => onPlayingChange(!playing)}
-          sx={{
-            bgcolor: (t) => t.palette.primary.dark,
-          }}
+          sx={{ bgcolor: (t) => t.palette.primary.dark }}
         >
           {playing ? m.pause() : m.play()}
         </Button>
@@ -74,13 +75,9 @@ export const PlaybackPanel: FC<{
           value={Math.min(currentTime, duration)}
           onChange={(_, value) => {
             onPlayingChange(false)
-            if (typeof value === 'number') {
-              onTimeChange(value)
-            }
+            if (typeof value === 'number') onTimeChange(value)
           }}
-          sx={{
-            color: (t) => t.palette.primary.dark,
-          }}
+          sx={{ color: (t) => t.palette.primary.dark }}
         />
         <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
           <Typography variant="caption" sx={{ fontFamily: 'monospace' }}>
@@ -95,7 +92,7 @@ export const PlaybackPanel: FC<{
           </Typography>
         </Stack>
       </Box>
-      {visualization}
+      <Box>{visualization}</Box>
     </Stack>
   </Card>
 )

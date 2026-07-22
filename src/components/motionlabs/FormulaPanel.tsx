@@ -15,7 +15,7 @@ export const FormulaPanel: FC<{ appearance: MotionAppearance }> = ({
       color: t.palette.primary.dark,
     })}
   >
-    <CardContent sx={{ padding: 3 }}>
+    <CardContent sx={{ padding: 3, textAlign: 'center' }}>
       <Typography component="div" variant="h5" sx={{ fontWeight: 700 }}>
         <MathText math={appearance.formula} display />
       </Typography>
