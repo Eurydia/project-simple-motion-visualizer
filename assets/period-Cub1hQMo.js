@@ -1,1 +1,0 @@
-import{y as e}from"./Stack-BtxBvDFV.js";var t=()=>`Period`,n=()=>`คาบ`,r=((r={},i={})=>(i.locale??e())===`en`?t(r):n(r));export{r as t};
