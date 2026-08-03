@@ -9,7 +9,7 @@
     "dev": "vite dev --port 3000",
     "build": "vite build && tsc --noEmit",
     "preview": "vite preview",
-    "deploy-gh-pages": "gh-pages -b gh-pages -d dist/",
+    "deploy": "gh-pages -b gh-pages -d dist/",
     "check": "pnpx @biomejs/biome check --write"
   },
   "dependencies": {
