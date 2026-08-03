@@ -1,10 +1,12 @@
 ![](assets/images/home.png)
 
+> Powered by [React Spring](https://www.react-spring.dev/)
+
 # ~Simple Motion Visualizer
 
-Visualize the four simple motion types in Introduction to Kinematics; projectile or parabolic motion, linear motion, spring/simple harmonic motion, and circular motion.
+A set of visualizers for simple motion; linear motion, projectile motion, simple harmonic motion, and circular motion with parametric adjustments.
 
-## ~Projectile / Parabolic Motion
+## ~Projectile Motion
 
 ![](assets/images/parabolic.png)
 
@@ -12,7 +14,7 @@ Visualize the four simple motion types in Introduction to Kinematics; projectile
 
 ![](assets/images/linear.png)
 
-## ~Spring / Simple Harmonic Motion
+## ~Simple Harmonic Motion
 
 ![](assets/images/spring.png)
 
