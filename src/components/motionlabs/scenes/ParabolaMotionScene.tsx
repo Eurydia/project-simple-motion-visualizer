@@ -1,44 +1,44 @@
-import { animated, useSpring } from '@react-spring/web'
-import type { FC } from 'react'
-import { useTheme } from '@mui/material/styles'
+import { useTheme } from "@mui/material/styles";
+import { animated, useSpring } from "@react-spring/web";
+import type { FC } from "react";
+import type { ParabolaSimulation } from "#/features/parabola/computation";
 import {
   getParabolaFlightTime,
   getParabolaMeasurements,
   getParabolaPosition,
-} from '#/features/parabola/computation'
-import type { ParabolaSimulation } from '#/features/parabola/computation'
-import { MotionArrow } from '../scene-elements/MotionArrow'
-import { MotionDot } from '../scene-elements/MotionDot'
-import { MotionLabel } from '../scene-elements/MotionLabel'
-import { MotionLine } from '../scene-elements/MotionLine'
-import { MotionScene } from '../scene-elements/MotionScene'
+} from "#/features/parabola/computation";
+import { MotionArrow } from "../scene-elements/MotionArrow";
+import { MotionDot } from "../scene-elements/MotionDot";
+import { MotionLabel } from "../scene-elements/MotionLabel";
+import { MotionLine } from "../scene-elements/MotionLine";
+import { MotionScene } from "../scene-elements/MotionScene";
 
 export const ParabolaMotionScene: FC<{
-  simulation: ParabolaSimulation
-  time: number
+  simulation: ParabolaSimulation;
+  time: number;
 }> = ({ simulation, time }) => {
-  const flight = getParabolaFlightTime(simulation)
-  const distance = getParabolaPosition(simulation, flight).x
-  const scale = Math.min(600 / Math.max(Math.abs(distance), 1), 14)
-  const originX = 96
-  const groundY = 344
-  const angle = (simulation.angle * Math.PI) / 180
+  const flight = getParabolaFlightTime(simulation);
+  const distance = getParabolaPosition(simulation, flight).x;
+  const scale = Math.min(600 / Math.max(Math.abs(distance), 1), 14);
+  const originX = 96;
+  const groundY = 344;
+  const angle = (simulation.angle * Math.PI) / 180;
   const trajectory = Array.from({ length: 81 }, (_, index) => {
-    const point = getParabolaPosition(simulation, (flight * index) / 80)
-    return `${originX + point.x * scale},${groundY - point.y * scale}`
-  }).join(' ')
-  const activeTime = Math.min(time % Math.max(flight + 0.7, 1), flight)
-  const point = getParabolaPosition(simulation, activeTime)
-  const x = originX + point.x * scale
-  const y = groundY - point.y * scale
-  const vectorLength = Math.min(90, simulation.velocity * 3)
+    const point = getParabolaPosition(simulation, (flight * index) / 80);
+    return `${originX + point.x * scale},${groundY - point.y * scale}`;
+  }).join(" ");
+  const activeTime = Math.min(time % Math.max(flight + 0.7, 1), flight);
+  const point = getParabolaPosition(simulation, activeTime);
+  const x = originX + point.x * scale;
+  const y = groundY - point.y * scale;
+  const vectorLength = Math.min(90, simulation.velocity * 3);
 
-  const t = useTheme()
+  const t = useTheme();
   const trajectoryEntrance = useSpring({
     from: { pathLength: 0 },
     to: { pathLength: 1 },
     config: { duration: 450 },
-  })
+  });
 
   return (
     <MotionScene
@@ -73,5 +73,5 @@ export const ParabolaMotionScene: FC<{
         text={`(${point.x.toFixed(1)}, ${point.y.toFixed(1)}) m`}
       />
     </MotionScene>
-  )
-}
+  );
+};

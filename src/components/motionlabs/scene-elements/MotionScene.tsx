@@ -1,37 +1,37 @@
-import { animated, useSpring } from '@react-spring/web'
-import type { FC, ReactNode } from 'react'
-import { useId } from 'react'
-import type { MotionMeasurement } from '../../../types/motion'
-import { SceneDefinitions } from './SceneDefinitions'
-import { MotionSceneContext } from './MotionSceneContext'
-import { sceneTokens } from './scene-tokens'
-import { useTheme } from '@mui/material/styles'
-import { SceneMeasurements } from './SceneMeasurements'
+import { useTheme } from "@mui/material/styles";
+import { animated, useSpring } from "@react-spring/web";
+import type { FC, ReactNode } from "react";
+import { useId } from "react";
+import type { MotionMeasurement } from "../../../types/motion";
+import { MotionSceneContext } from "./MotionSceneContext";
+import { SceneDefinitions } from "./SceneDefinitions";
+import { SceneMeasurements } from "./SceneMeasurements";
+import { sceneTokens } from "./scene-tokens";
 
 export const MotionScene: FC<{
-  time: number
-  measurements: readonly MotionMeasurement[]
-  children: ReactNode
+  time: number;
+  measurements: readonly MotionMeasurement[];
+  children: ReactNode;
 }> = (props) => {
-  const instanceId = useId().replace(/:/g, '')
-  const arrowMarkerId = `motion-arrow-${instanceId}`
-  const glowFilterId = `motion-glow-${instanceId}`
-  const t = useTheme()
+  const instanceId = useId().replace(/:/g, "");
+  const arrowMarkerId = `motion-arrow-${instanceId}`;
+  const glowFilterId = `motion-glow-${instanceId}`;
+  const t = useTheme();
   const entrance = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
     config: { duration: 180 },
-  })
+  });
 
   return (
     <MotionSceneContext.Provider value={{ arrowMarkerId, glowFilterId }}>
       <svg
         viewBox={`0 0 ${sceneTokens.width} ${sceneTokens.height}`}
         style={{
-          display: 'block',
-          width: '100%',
+          display: "block",
+          width: "100%",
           minHeight: 300,
-          background: '#ffffff',
+          background: "#ffffff",
         }}
       >
         <SceneDefinitions
@@ -53,5 +53,5 @@ export const MotionScene: FC<{
         />
       </svg>
     </MotionSceneContext.Provider>
-  )
-}
+  );
+};

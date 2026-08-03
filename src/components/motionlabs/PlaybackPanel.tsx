@@ -1,29 +1,29 @@
-import ChevronLeftRounded from '@mui/icons-material/ChevronLeftRounded'
-import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded'
-import PauseRounded from '@mui/icons-material/PauseRounded'
-import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded'
-import RestartAltRounded from '@mui/icons-material/RestartAltRounded'
-import SkipPreviousRounded from '@mui/icons-material/SkipPreviousRounded'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Card from '@mui/material/Card'
-import IconButton from '@mui/material/IconButton'
-import Slider from '@mui/material/Slider'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import type { FC, ReactNode } from 'react'
-import { formatTimelineTime } from '../../helpers/playback.js'
-import { m } from '../../lib/paraglide/messages.js'
+import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
+import PauseRounded from "@mui/icons-material/PauseRounded";
+import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
+import RestartAltRounded from "@mui/icons-material/RestartAltRounded";
+import SkipPreviousRounded from "@mui/icons-material/SkipPreviousRounded";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import IconButton from "@mui/material/IconButton";
+import Slider from "@mui/material/Slider";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import type { FC, ReactNode } from "react";
+import { formatTimelineTime } from "../../helpers/playback.js";
+import { m } from "../../lib/paraglide/messages.js";
 
 export const PlaybackPanel: FC<{
-  visualization: ReactNode
-  currentTime: number
-  duration: number
-  playing: boolean
-  onPlayingChange: (playing: boolean) => void
-  onTimeChange: (time: number) => void
-  onStepFrame: (direction: -1 | 1) => void
-  onReset: () => void
+  visualization: ReactNode;
+  currentTime: number;
+  duration: number;
+  playing: boolean;
+  onPlayingChange: (playing: boolean) => void;
+  onTimeChange: (time: number) => void;
+  onStepFrame: (direction: -1 | 1) => void;
+  onReset: () => void;
 }> = ({
   visualization,
   currentTime,
@@ -36,10 +36,10 @@ export const PlaybackPanel: FC<{
 }) => (
   <Card
     variant="outlined"
-    sx={{ backgroundColor: 'rgba(255, 254, 249, 0.84)', padding: 2 }}
+    sx={{ backgroundColor: "rgba(255, 254, 249, 0.84)", padding: 2 }}
   >
     <Stack spacing={2}>
-      <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+      <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
         <Button
           variant="contained"
           disableElevation
@@ -51,8 +51,8 @@ export const PlaybackPanel: FC<{
         </Button>
         <IconButton
           onClick={() => {
-            onPlayingChange(false)
-            onTimeChange(0)
+            onPlayingChange(false);
+            onTimeChange(0);
           }}
         >
           <SkipPreviousRounded />
@@ -74,19 +74,19 @@ export const PlaybackPanel: FC<{
           step={Math.max(duration / 600, 0.001)}
           value={Math.min(currentTime, duration)}
           onChange={(_, value) => {
-            onPlayingChange(false)
-            if (typeof value === 'number') onTimeChange(value)
+            onPlayingChange(false);
+            if (typeof value === "number") onTimeChange(value);
           }}
           sx={{ color: (t) => t.palette.primary.dark }}
         />
-        <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
-          <Typography variant="caption" sx={{ fontFamily: 'monospace' }}>
+        <Stack direction="row" sx={{ justifyContent: "space-between" }}>
+          <Typography variant="caption" sx={{ fontFamily: "monospace" }}>
             {formatTimelineTime(currentTime)}
           </Typography>
           <Typography
             variant="caption"
             color="textSecondary"
-            sx={{ fontFamily: 'monospace' }}
+            sx={{ fontFamily: "monospace" }}
           >
             {formatTimelineTime(duration)}
           </Typography>
@@ -95,4 +95,4 @@ export const PlaybackPanel: FC<{
       <Box>{visualization}</Box>
     </Stack>
   </Card>
-)
+);

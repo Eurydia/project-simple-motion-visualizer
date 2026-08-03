@@ -1,25 +1,25 @@
-import Stack from '@mui/material/Stack'
-import type { FC } from 'react'
-import type { useParabolaMotion } from '../../hooks/use-parabola-motion'
-import { ParameterFormLayout } from '../../components/forms/ParameterFormLayout'
-import { ParameterSetSelector } from '../../components/forms/ParameterSetSelector'
-import { parabolaParameterSets } from './config'
-import type { ParabolaParameterSetId } from './config'
+import Stack from "@mui/material/Stack";
+import type { FC } from "react";
+import { ParameterFormLayout } from "../../components/forms/ParameterFormLayout";
+import { ParameterSetSelector } from "../../components/forms/ParameterSetSelector";
+import type { useParabolaMotion } from "../../hooks/use-parabola-motion";
+import type { ParabolaParameterSetId } from "./config";
+import { parabolaParameterSets } from "./config";
 
 const isParabolaParameterSetId = (
   value: string,
 ): value is ParabolaParameterSetId =>
-  value === 'polar' || value === 'components' || value === 'apex'
+  value === "polar" || value === "components" || value === "apex";
 export const ParabolaMotionForm: FC<{
-  controller: ReturnType<typeof useParabolaMotion>
+  controller: ReturnType<typeof useParabolaMotion>;
 }> = ({ controller }) => {
   const parameterSet = parabolaParameterSets.find(
     (set) => set.id === controller.parameterSetId,
-  )
+  );
   if (parameterSet === undefined)
     throw new Error(
       `Unknown parabola parameter set: ${controller.parameterSetId}`,
-    )
+    );
   return (
     <ParameterFormLayout
       selector={
@@ -27,7 +27,7 @@ export const ParabolaMotionForm: FC<{
           options={parabolaParameterSets}
           activeValueId={controller.parameterSetId}
           onChange={(id) => {
-            if (isParabolaParameterSetId(id)) controller.selectParameterSet(id)
+            if (isParabolaParameterSetId(id)) controller.selectParameterSet(id);
           }}
         />
       }
@@ -41,5 +41,5 @@ export const ParabolaMotionForm: FC<{
         </Stack>
       }
     />
-  )
-}
+  );
+};

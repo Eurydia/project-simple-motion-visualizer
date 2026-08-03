@@ -1,27 +1,27 @@
-import type { MotionParameter } from '#/types/motion'
-import Chip from '@mui/material/Chip'
-import InputAdornment from '@mui/material/InputAdornment'
-import TextField from '@mui/material/TextField'
-import { Box, Stack } from '@mui/system'
-import Typography from '@mui/material/Typography'
-import type { FC } from 'react'
-import { MathText } from '../motionlabs/MathText'
-import { useFieldContext } from '#/lib/form/form-contexts'
+import Chip from "@mui/material/Chip";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { Box, Stack } from "@mui/system";
+import type { FC } from "react";
+import { useFieldContext } from "#/lib/form/form-contexts";
+import type { MotionParameter } from "#/types/motion";
+import { MathText } from "../motionlabs/MathText";
 
 export const MotionNumberField: FC<{
-  parameter: MotionParameter<string>
+  parameter: MotionParameter<string>;
 }> = ({ parameter }) => {
-  const field = useFieldContext<number>()
-  const error = field.state.meta.errors[0]
+  const field = useFieldContext<number>();
+  const error = field.state.meta.errors[0];
   const helperText =
-    typeof error === 'object' && error !== null && 'message' in error
+    typeof error === "object" && error !== null && "message" in error
       ? String(error.message)
-      : parameter.hint
+      : parameter.hint;
   return (
     <Box>
       <Stack
         direction="row"
-        sx={{ justifyContent: 'space-between', alignItems: 'baseline', mb: 1 }}
+        sx={{ justifyContent: "space-between", alignItems: "baseline", mb: 1 }}
       >
         <Typography sx={{ fontWeight: 700 }}>{parameter.label}</Typography>
         <Chip
@@ -37,16 +37,16 @@ export const MotionNumberField: FC<{
         fullWidth
         type="number"
         name={field.name}
-        value={Number.isNaN(field.state.value) ? '' : field.state.value}
+        value={Number.isNaN(field.state.value) ? "" : field.state.value}
         error={!field.state.meta.isValid}
         helperText={helperText}
         onBlur={field.handleBlur}
         onChange={(event) => {
-          const value = event.target.value
-          field.handleChange(value === '' ? Number.NaN : Number(value))
+          const value = event.target.value;
+          field.handleChange(value === "" ? Number.NaN : Number(value));
         }}
         slotProps={{
-          htmlInput: { step: parameter.step, 'aria-label': parameter.label },
+          htmlInput: { step: parameter.step, "aria-label": parameter.label },
           input: {
             endAdornment: parameter.unit ? (
               <InputAdornment position="end">{parameter.unit}</InputAdornment>
@@ -55,5 +55,5 @@ export const MotionNumberField: FC<{
         }}
       />
     </Box>
-  )
-}
+  );
+};

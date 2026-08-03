@@ -1,12 +1,12 @@
-import type { FC } from 'react'
-import { ParabolaMotionScene } from '../../components/motionlabs/scenes/ParabolaMotionScene'
-import { MotionLabLayout } from '../../components/layout/MotionLabLayout'
-import { useParabolaMotion } from '../../hooks/use-parabola-motion'
-import { parabolaAppearance } from './config'
-import { ParabolaMotionForm } from './ParabolaMotionForm'
+import type { FC } from "react";
+import { MotionLabLayout } from "../../components/layout/MotionLabLayout";
+import { ParabolaMotionScene } from "../../components/motionlabs/scenes/ParabolaMotionScene";
+import { useParabolaMotion } from "../../hooks/use-parabola-motion";
+import { parabolaAppearance } from "./config";
+import { ParabolaMotionForm } from "./ParabolaMotionForm";
 
 export const ParabolaMotionLab: FC = () => {
-  const controller = useParabolaMotion()
+  const controller = useParabolaMotion();
   return (
     <MotionLabLayout
       appearance={parabolaAppearance}
@@ -25,5 +25,5 @@ export const ParabolaMotionLab: FC = () => {
       onStepFrame={controller.stepFrame}
       onReset={controller.reset}
     />
-  )
-}
+  );
+};

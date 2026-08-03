@@ -1,15 +1,15 @@
-import { animated, useSpring } from '@react-spring/web'
-import type { FC } from 'react'
-import { useMotionSceneContext } from './MotionSceneContext'
-import { useTheme } from '@mui/material/styles'
+import { useTheme } from "@mui/material/styles";
+import { animated, useSpring } from "@react-spring/web";
+import type { FC } from "react";
+import { useMotionSceneContext } from "./MotionSceneContext";
 
 export const MotionDot: FC<{ x: number; y: number }> = (props) => {
-  const { glowFilterId } = useMotionSceneContext()
-  const t = useTheme()
+  const { glowFilterId } = useMotionSceneContext();
+  const t = useTheme();
   const position = useSpring({
     to: { cx: props.x, cy: props.y },
     immediate: true,
-  })
+  });
 
   return (
     <animated.circle
@@ -21,5 +21,5 @@ export const MotionDot: FC<{ x: number; y: number }> = (props) => {
       strokeWidth="3"
       filter={`url(#${glowFilterId})`}
     />
-  )
-}
+  );
+};

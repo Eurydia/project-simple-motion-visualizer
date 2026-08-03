@@ -1,48 +1,48 @@
-import { useSelector } from '@tanstack/react-form'
-import { useMemo, useRef, useState } from 'react'
+import { useSelector } from "@tanstack/react-form";
+import { useMemo, useRef, useState } from "react";
+import { useMotionForm } from "#/lib/form/form-hooks";
 import {
   createLinearSimulation,
   getLinearDuration,
-} from '../features/linear/computation'
-import { linearDefaults, linearParameterSets } from '../features/linear/config'
-import type { LinearParameterSetId } from '../features/linear/config'
-import { createLinearSchema } from '../features/linear/schema'
-import { useMotionPlayback } from './use-motion-playback'
-import { useMotionForm } from '#/lib/form/form-hooks'
+} from "../features/linear/computation";
+import type { LinearParameterSetId } from "../features/linear/config";
+import { linearDefaults, linearParameterSets } from "../features/linear/config";
+import { createLinearSchema } from "../features/linear/schema";
+import { useMotionPlayback } from "./use-motion-playback";
 
 export const useLinearMotion = () => {
   const [parameterSetId, setParameterSetId] =
-    useState<LinearParameterSetId>('velocity')
+    useState<LinearParameterSetId>("velocity");
   const schema = useMemo(
     () => createLinearSchema(parameterSetId),
     [parameterSetId],
-  )
+  );
   const form = useMotionForm({
     defaultValues: linearDefaults,
     validators: { onChange: schema },
     onSubmit: () => undefined,
-  })
+  });
 
-  const values = useSelector(form.store, (state) => state.values)
-  const isValid = useSelector(form.store, (state) => state.isValid)
-  const lastValid = useRef(createLinearSimulation('velocity', linearDefaults))
+  const values = useSelector(form.store, (state) => state.values);
+  const isValid = useSelector(form.store, (state) => state.isValid);
+  const lastValid = useRef(createLinearSimulation("velocity", linearDefaults));
 
   if (isValid) {
-    lastValid.current = createLinearSimulation(parameterSetId, values)
+    lastValid.current = createLinearSimulation(parameterSetId, values);
   }
-  const simulation = lastValid.current
-  const playback = useMotionPlayback(getLinearDuration(simulation))
+  const simulation = lastValid.current;
+  const playback = useMotionPlayback(getLinearDuration(simulation));
   const selectParameterSet = (nextId: LinearParameterSetId) => {
-    setParameterSetId(nextId)
-    form.reset(linearDefaults)
-    lastValid.current = createLinearSimulation(nextId, linearDefaults)
-    playback.resetPlayback()
-  }
+    setParameterSetId(nextId);
+    form.reset(linearDefaults);
+    lastValid.current = createLinearSimulation(nextId, linearDefaults);
+    playback.resetPlayback();
+  };
   const reset = () => {
-    form.reset(linearDefaults)
-    lastValid.current = createLinearSimulation(parameterSetId, linearDefaults)
-    playback.resetPlayback()
-  }
+    form.reset(linearDefaults);
+    lastValid.current = createLinearSimulation(parameterSetId, linearDefaults);
+    playback.resetPlayback();
+  };
   return {
     form,
     parameterSetId,
@@ -52,5 +52,5 @@ export const useLinearMotion = () => {
     duration: getLinearDuration(simulation),
     reset,
     ...playback,
-  }
-}
+  };
+};

@@ -1,100 +1,100 @@
-import { m } from '../../lib/paraglide/messages.js'
+import { m } from "../../lib/paraglide/messages.js";
 import type {
   MotionAppearance,
   MotionParameter,
   MotionParameterSet,
-} from '../../types/motion'
+} from "../../types/motion";
 
 export type CircularFormValues = {
-  radius: number
-  speed: number
-  angle: number
-  period: number
-  tangentialVelocity: number
-}
-export type CircularField = keyof CircularFormValues
-export type CircularParameterSetId = 'angular' | 'period' | 'tangential'
+  radius: number;
+  speed: number;
+  angle: number;
+  period: number;
+  tangentialVelocity: number;
+};
+export type CircularField = keyof CircularFormValues;
+export type CircularParameterSetId = "angular" | "period" | "tangential";
 
 export const circularAppearance: MotionAppearance = {
   title: m.circular_title(),
-  formula: '\\theta(t) = \\theta_0 + \\omega t',
-}
+  formula: "\\theta(t) = \\theta_0 + \\omega t",
+};
 const radius: MotionParameter<CircularField> = {
-  key: 'radius',
+  key: "radius",
   label: m.radius(),
-  symbol: 'r',
+  symbol: "r",
   hint: m.hint_radius(),
-  unit: 'm',
+  unit: "m",
   step: 0.5,
-}
+};
 const angle: MotionParameter<CircularField> = {
-  key: 'angle',
+  key: "angle",
   label: m.start_angle(),
-  symbol: '\\theta_0',
+  symbol: "\\theta_0",
   hint: m.hint_start_angle(),
-  unit: '°',
+  unit: "°",
   step: 5,
-}
+};
 export const circularParameterSets: readonly MotionParameterSet<
   CircularParameterSetId,
   CircularField
 >[] = [
   {
-    id: 'angular',
+    id: "angular",
     label: m.angular_velocity(),
     description: m.use_rotation_rate(),
     parameters: [
       radius,
       {
-        key: 'speed',
+        key: "speed",
         label: m.angular_velocity(),
-        symbol: '\\omega',
+        symbol: "\\omega",
         hint: m.hint_angular_velocity(),
-        unit: 'rad/s',
+        unit: "rad/s",
         step: 0.1,
       },
       angle,
     ],
   },
   {
-    id: 'period',
+    id: "period",
     label: m.period(),
     description: m.use_revolution_time(),
     parameters: [
       radius,
       {
-        key: 'period',
+        key: "period",
         label: m.orbital_period(),
-        symbol: 'T',
+        symbol: "T",
         hint: m.hint_orbital_period(),
-        unit: 's',
+        unit: "s",
         step: 0.1,
       },
       angle,
     ],
   },
   {
-    id: 'tangential',
+    id: "tangential",
     label: m.tangential_speed(),
     description: m.use_path_speed(),
     parameters: [
       radius,
       {
-        key: 'tangentialVelocity',
+        key: "tangentialVelocity",
         label: m.tangential_velocity(),
-        symbol: 'v_t',
+        symbol: "v_t",
         hint: m.hint_tangential_velocity(),
-        unit: 'm/s',
+        unit: "m/s",
         step: 0.5,
       },
       angle,
     ],
   },
-]
+];
 export const circularDefaults: CircularFormValues = {
   radius: 5,
   speed: 1.2,
   angle: 0,
   period: 5.2,
   tangentialVelocity: 6,
-}
+};

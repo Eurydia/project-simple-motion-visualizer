@@ -1,12 +1,12 @@
-import type { FC } from 'react'
-import { SpringMotionScene } from '../../components/motionlabs/scenes/SpringMotionScene'
-import { MotionLabLayout } from '../../components/layout/MotionLabLayout'
-import { useSpringMotion } from '../../hooks/use-spring-motion'
-import { SpringMotionForm } from './SpringMotionForm'
-import { springAppearance } from './config'
+import type { FC } from "react";
+import { MotionLabLayout } from "../../components/layout/MotionLabLayout";
+import { SpringMotionScene } from "../../components/motionlabs/scenes/SpringMotionScene";
+import { useSpringMotion } from "../../hooks/use-spring-motion";
+import { springAppearance } from "./config";
+import { SpringMotionForm } from "./SpringMotionForm";
 
 export const SpringMotionLab: FC = () => {
-  const controller = useSpringMotion()
+  const controller = useSpringMotion();
 
   return (
     <MotionLabLayout
@@ -26,5 +26,5 @@ export const SpringMotionLab: FC = () => {
       onStepFrame={controller.stepFrame}
       onReset={controller.reset}
     />
-  )
-}
+  );
+};

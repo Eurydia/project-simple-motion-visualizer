@@ -1,28 +1,28 @@
-import type { CircularSimulation } from '#/features/circular/computation'
+import { useTheme } from "@mui/material/styles";
+import type { FC } from "react";
+import type { CircularSimulation } from "#/features/circular/computation";
 import {
   getCircularMeasurements,
   getCircularPosition,
-} from '#/features/circular/computation'
-import { useTheme } from '@mui/material/styles'
-import type { FC } from 'react'
-import { MotionArrow } from '../scene-elements/MotionArrow'
-import { MotionDot } from '../scene-elements/MotionDot'
-import { MotionLabel } from '../scene-elements/MotionLabel'
-import { MotionScene } from '../scene-elements/MotionScene'
+} from "#/features/circular/computation";
+import { MotionArrow } from "../scene-elements/MotionArrow";
+import { MotionDot } from "../scene-elements/MotionDot";
+import { MotionLabel } from "../scene-elements/MotionLabel";
+import { MotionScene } from "../scene-elements/MotionScene";
 
 export const CircularMotionScene: FC<{
-  simulation: CircularSimulation
-  time: number
+  simulation: CircularSimulation;
+  time: number;
 }> = ({ simulation, time }) => {
-  const centerX = 400
-  const centerY = 210
-  const radius = Math.min(300, 60 + simulation.radius * 12)
-  const position = getCircularPosition(simulation, time)
-  const x = centerX + Math.cos(position.theta) * radius
-  const y = centerY + Math.sin(position.theta) * radius
-  const direction = simulation.speed >= 0 ? 1 : -1
+  const centerX = 400;
+  const centerY = 210;
+  const radius = Math.min(300, 60 + simulation.radius * 12);
+  const position = getCircularPosition(simulation, time);
+  const x = centerX + Math.cos(position.theta) * radius;
+  const y = centerY + Math.sin(position.theta) * radius;
+  const direction = simulation.speed >= 0 ? 1 : -1;
 
-  const t = useTheme()
+  const t = useTheme();
 
   return (
     <MotionScene
@@ -67,5 +67,5 @@ export const CircularMotionScene: FC<{
         text={`θ = ${(((position.theta * 180) / Math.PI) % 360).toFixed(0)}°`}
       />
     </MotionScene>
-  )
-}
+  );
+};

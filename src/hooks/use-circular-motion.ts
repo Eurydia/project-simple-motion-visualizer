@@ -1,53 +1,53 @@
-import { useSelector } from '@tanstack/react-form'
-import { useMemo, useRef, useState } from 'react'
+import { useSelector } from "@tanstack/react-form";
+import { useMemo, useRef, useState } from "react";
+import { useMotionForm } from "#/lib/form/form-hooks";
 import {
   createCircularSimulation,
   getCircularDuration,
-} from '../features/circular/computation'
+} from "../features/circular/computation";
+import type { CircularParameterSetId } from "../features/circular/config";
 import {
   circularDefaults,
   circularParameterSets,
-} from '../features/circular/config'
-import type { CircularParameterSetId } from '../features/circular/config'
-import { createCircularSchema } from '../features/circular/schema'
-import { useMotionPlayback } from './use-motion-playback'
-import { useMotionForm } from '#/lib/form/form-hooks'
+} from "../features/circular/config";
+import { createCircularSchema } from "../features/circular/schema";
+import { useMotionPlayback } from "./use-motion-playback";
 
 export const useCircularMotion = () => {
   const [parameterSetId, setParameterSetId] =
-    useState<CircularParameterSetId>('angular')
+    useState<CircularParameterSetId>("angular");
   const schema = useMemo(
     () => createCircularSchema(parameterSetId),
     [parameterSetId],
-  )
+  );
   const form = useMotionForm({
     defaultValues: circularDefaults,
     validators: { onChange: schema },
-  })
-  const values = useSelector(form.store, (state) => state.values)
-  const isValid = useSelector(form.store, (state) => state.isValid)
+  });
+  const values = useSelector(form.store, (state) => state.values);
+  const isValid = useSelector(form.store, (state) => state.isValid);
   const lastValid = useRef(
-    createCircularSimulation('angular', circularDefaults),
-  )
+    createCircularSimulation("angular", circularDefaults),
+  );
   if (isValid) {
-    lastValid.current = createCircularSimulation(parameterSetId, values)
+    lastValid.current = createCircularSimulation(parameterSetId, values);
   }
-  const simulation = lastValid.current
-  const playback = useMotionPlayback(getCircularDuration(simulation))
+  const simulation = lastValid.current;
+  const playback = useMotionPlayback(getCircularDuration(simulation));
   const selectParameterSet = (nextId: CircularParameterSetId) => {
-    setParameterSetId(nextId)
-    form.reset(circularDefaults)
-    lastValid.current = createCircularSimulation(nextId, circularDefaults)
-    playback.resetPlayback()
-  }
+    setParameterSetId(nextId);
+    form.reset(circularDefaults);
+    lastValid.current = createCircularSimulation(nextId, circularDefaults);
+    playback.resetPlayback();
+  };
   const reset = () => {
-    form.reset(circularDefaults)
+    form.reset(circularDefaults);
     lastValid.current = createCircularSimulation(
       parameterSetId,
       circularDefaults,
-    )
-    playback.resetPlayback()
-  }
+    );
+    playback.resetPlayback();
+  };
   return {
     form,
     parameterSetId,
@@ -57,5 +57,5 @@ export const useCircularMotion = () => {
     duration: getCircularDuration(simulation),
     reset,
     ...playback,
-  }
-}
+  };
+};

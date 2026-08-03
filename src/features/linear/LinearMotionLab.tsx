@@ -1,12 +1,12 @@
-import type { FC } from 'react'
-import { linearAppearance } from './config'
-import { LinearMotionForm } from './LinearMotionForm'
-import { useLinearMotion } from '#/hooks/use-linear-motion'
-import { MotionLabLayout } from '#/components/layout/MotionLabLayout'
-import { LinearMotionScene } from '#/components/motionlabs/scenes/LinearMotionScene'
+import type { FC } from "react";
+import { MotionLabLayout } from "#/components/layout/MotionLabLayout";
+import { LinearMotionScene } from "#/components/motionlabs/scenes/LinearMotionScene";
+import { useLinearMotion } from "#/hooks/use-linear-motion";
+import { linearAppearance } from "./config";
+import { LinearMotionForm } from "./LinearMotionForm";
 
 export const LinearMotionLab: FC = () => {
-  const controller = useLinearMotion()
+  const controller = useLinearMotion();
   return (
     <MotionLabLayout
       appearance={linearAppearance}
@@ -25,5 +25,5 @@ export const LinearMotionLab: FC = () => {
       onStepFrame={controller.stepFrame}
       onReset={controller.reset}
     />
-  )
-}
+  );
+};

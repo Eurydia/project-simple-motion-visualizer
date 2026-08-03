@@ -1,17 +1,17 @@
-import type { FC } from 'react'
-import { useMotionSceneContext } from './MotionSceneContext'
-import { MotionLabel } from './MotionLabel'
-import { useTheme } from '@mui/material/styles'
+import { useTheme } from "@mui/material/styles";
+import type { FC } from "react";
+import { MotionLabel } from "./MotionLabel";
+import { useMotionSceneContext } from "./MotionSceneContext";
 
 export const MotionArrow: FC<{
-  x1: number
-  y1: number
-  x2: number
-  y2: number
-  label?: string
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  label?: string;
 }> = ({ x1, y1, x2, y2, label }) => {
-  const { arrowMarkerId } = useMotionSceneContext()
-  const t = useTheme()
+  const { arrowMarkerId } = useMotionSceneContext();
+  const t = useTheme();
   return (
     <g>
       <line
@@ -32,5 +32,5 @@ export const MotionArrow: FC<{
         />
       )}
     </g>
-  )
-}
+  );
+};

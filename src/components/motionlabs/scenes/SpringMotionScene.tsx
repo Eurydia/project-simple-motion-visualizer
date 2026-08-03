@@ -1,41 +1,41 @@
-import type { SpringSimulation } from '#/features/spring/computation'
+import { useTheme } from "@mui/material/styles";
+import { animated, useSpring } from "@react-spring/web";
+import type { FC } from "react";
+import type { SpringSimulation } from "#/features/spring/computation";
 import {
   getSpringMeasurements,
   getSpringPosition,
-} from '#/features/spring/computation'
-import { m } from '#/lib/paraglide/messages'
-import { useTheme } from '@mui/material/styles'
-import { animated, useSpring } from '@react-spring/web'
-import type { FC } from 'react'
-import { MotionArrow } from '../scene-elements/MotionArrow'
-import { MotionDot } from '../scene-elements/MotionDot'
-import { MotionLabel } from '../scene-elements/MotionLabel'
-import { MotionLine } from '../scene-elements/MotionLine'
-import { MotionScene } from '../scene-elements/MotionScene'
+} from "#/features/spring/computation";
+import { m } from "#/lib/paraglide/messages";
+import { MotionArrow } from "../scene-elements/MotionArrow";
+import { MotionDot } from "../scene-elements/MotionDot";
+import { MotionLabel } from "../scene-elements/MotionLabel";
+import { MotionLine } from "../scene-elements/MotionLine";
+import { MotionScene } from "../scene-elements/MotionScene";
 
 export const SpringMotionScene: FC<{
-  simulation: SpringSimulation
-  time: number
+  simulation: SpringSimulation;
+  time: number;
 }> = ({ simulation, time }) => {
-  const equilibrium = 400
-  const y = 210
-  const amplitude = Math.min(240, simulation.amplitude * 42)
+  const equilibrium = 400;
+  const y = 210;
+  const amplitude = Math.min(240, simulation.amplitude * 42);
   const x =
     equilibrium +
-    (getSpringPosition(simulation, time) / simulation.amplitude) * amplitude
-  const wall = 80
+    (getSpringPosition(simulation, time) / simulation.amplitude) * amplitude;
+  const wall = 80;
   const points = Array.from({ length: 19 }, (_, index) => {
-    const px = wall + ((x - wall) * index) / 18
-    const py = y + (index === 0 || index === 18 ? 0 : index % 2 ? -13 : 13)
-    return `${px},${py}`
-  }).join(' ')
+    const px = wall + ((x - wall) * index) / 18;
+    const py = y + (index === 0 || index === 18 ? 0 : index % 2 ? -13 : 13);
+    return `${px},${py}`;
+  }).join(" ");
 
   const springShape = useSpring({
     to: { points },
     immediate: true,
-  })
+  });
 
-  const t = useTheme()
+  const t = useTheme();
   return (
     <MotionScene
       time={time}
@@ -92,5 +92,5 @@ export const SpringMotionScene: FC<{
       />
       <MotionDot x={x} y={y} />
     </MotionScene>
-  )
-}
+  );
+};

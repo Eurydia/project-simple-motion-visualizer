@@ -1,74 +1,74 @@
-import { m } from '../../lib/paraglide/messages.js'
+import { m } from "../../lib/paraglide/messages.js";
 import type {
   MotionAppearance,
   MotionParameter,
   MotionParameterSet,
-} from '../../types/motion'
+} from "../../types/motion";
 
 export type ParabolaFormValues = {
-  velocity: number
-  angle: number
-  gravity: number
-  height: number
-  velocityX: number
-  velocityY: number
-  apexTime: number
-}
-export type ParabolaField = keyof ParabolaFormValues
-export type ParabolaParameterSetId = 'polar' | 'components' | 'apex'
+  velocity: number;
+  angle: number;
+  gravity: number;
+  height: number;
+  velocityX: number;
+  velocityY: number;
+  apexTime: number;
+};
+export type ParabolaField = keyof ParabolaFormValues;
+export type ParabolaParameterSetId = "polar" | "components" | "apex";
 
 export const parabolaAppearance: MotionAppearance = {
   title: m.parabola_title(),
-  formula: 'y(t) = y_0 + v_0 \\sin(\\theta)t - \\frac{1}{2}gt^2',
-}
+  formula: "y(t) = y_0 + v_0 \\sin(\\theta)t - \\frac{1}{2}gt^2",
+};
 const gravity: MotionParameter<ParabolaField> = {
-  key: 'gravity',
+  key: "gravity",
   label: m.gravity(),
-  symbol: 'g',
+  symbol: "g",
   hint: m.hint_gravity(),
-  unit: 'm/s²',
+  unit: "m/s²",
   step: 0.1,
-}
+};
 const height: MotionParameter<ParabolaField> = {
-  key: 'height',
+  key: "height",
   label: m.start_height(),
-  symbol: 'y_0',
+  symbol: "y_0",
   hint: m.hint_start_height(),
-  unit: 'm',
+  unit: "m",
   step: 0.5,
-}
+};
 const velocityX: MotionParameter<ParabolaField> = {
-  key: 'velocityX',
+  key: "velocityX",
   label: m.horizontal_velocity(),
-  symbol: 'v_{0x}',
+  symbol: "v_{0x}",
   hint: m.hint_initial_vx(),
-  unit: 'm/s',
+  unit: "m/s",
   step: 1,
-}
+};
 
 export const parabolaParameterSets: readonly MotionParameterSet<
   ParabolaParameterSetId,
   ParabolaField
 >[] = [
   {
-    id: 'polar',
+    id: "polar",
     label: m.speed_angle(),
     description: m.use_launch_direction(),
     parameters: [
       {
-        key: 'velocity',
+        key: "velocity",
         label: m.initial_speed(),
-        symbol: 'v_0',
+        symbol: "v_0",
         hint: m.hint_initial_speed(),
-        unit: 'm/s',
+        unit: "m/s",
         step: 1,
       },
       {
-        key: 'angle',
+        key: "angle",
         label: m.launch_angle(),
-        symbol: '\\theta',
+        symbol: "\\theta",
         hint: m.hint_launch_angle(),
-        unit: '°',
+        unit: "°",
         step: 1,
       },
       gravity,
@@ -76,17 +76,17 @@ export const parabolaParameterSets: readonly MotionParameterSet<
     ],
   },
   {
-    id: 'components',
+    id: "components",
     label: m.components(),
     description: m.use_velocity_components(),
     parameters: [
       velocityX,
       {
-        key: 'velocityY',
+        key: "velocityY",
         label: m.vertical_velocity(),
-        symbol: 'v_{0y}',
+        symbol: "v_{0y}",
         hint: m.hint_initial_vy(),
-        unit: 'm/s',
+        unit: "m/s",
         step: 1,
       },
       gravity,
@@ -94,24 +94,24 @@ export const parabolaParameterSets: readonly MotionParameterSet<
     ],
   },
   {
-    id: 'apex',
+    id: "apex",
     label: m.time_apex(),
     description: m.use_climb_time(),
     parameters: [
       velocityX,
       {
-        key: 'apexTime',
+        key: "apexTime",
         label: m.time_apex(),
-        symbol: 't_{apex}',
+        symbol: "t_{apex}",
         hint: m.hint_apex_time(),
-        unit: 's',
+        unit: "s",
         step: 0.1,
       },
       gravity,
       height,
     ],
   },
-]
+];
 export const parabolaDefaults: ParabolaFormValues = {
   velocity: 24,
   angle: 45,
@@ -120,4 +120,4 @@ export const parabolaDefaults: ParabolaFormValues = {
   velocityX: 17,
   velocityY: 17,
   apexTime: 1.7,
-}
+};

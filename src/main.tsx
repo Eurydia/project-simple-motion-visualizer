@@ -1,27 +1,29 @@
-import ReactDOM from 'react-dom/client'
 import {
-  RouterProvider,
   createHashHistory,
   createRouter,
-} from '@tanstack/react-router'
-import { routeTree } from './routeTree.gen'
+  RouterProvider,
+} from "@tanstack/react-router";
+import ReactDOM from "react-dom/client";
+import { routeTree } from "./routeTree.gen";
 
 const router = createRouter({
   routeTree,
-  defaultPreload: 'intent',
+  defaultPreload: "intent",
   scrollRestoration: true,
   history: createHashHistory(),
-})
+});
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }
 
-const rootElement = document.getElementById('app')!
+const rootElement = document.getElementById("app");
 
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement)
-  root.render(<RouterProvider router={router} />)
+if (rootElement === null) {
+  throw Error("Root missing");
 }
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(<RouterProvider router={router} />);

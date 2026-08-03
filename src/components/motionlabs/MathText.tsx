@@ -1,22 +1,22 @@
-import katex from 'katex'
-import type { FC } from 'react'
-import 'katex/dist/katex.min.css'
+import Box from "@mui/material/Box";
+import katex from "katex";
+import type { FC } from "react";
 
 export const MathText: FC<{
-  math: string
-  display?: boolean
+  math: string;
+  display?: boolean;
 }> = ({ math, display = false }) => {
   return (
-    <span
-      className={display ? 'math-text math-text--display' : 'math-text'}
+    <Box
+      component={"span"}
       dangerouslySetInnerHTML={{
         __html: katex.renderToString(math, {
           displayMode: display,
           throwOnError: false,
           strict: false,
-          output: 'html',
+          output: "html",
         }),
       }}
     />
-  )
-}
+  );
+};

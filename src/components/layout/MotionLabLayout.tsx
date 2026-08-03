@@ -1,23 +1,23 @@
-import Grid from '@mui/material/Grid'
-import Stack from '@mui/material/Stack'
-import type { FC, ReactNode } from 'react'
-import type { MotionAppearance } from '../../types/motion'
-import { BaseLayout } from './base-layout'
-import { FormulaPanel } from '../motionlabs/FormulaPanel'
-import { PlaybackPanel } from '../motionlabs/PlaybackPanel'
-import { useTheme } from '@mui/material/styles'
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import type { FC, ReactNode } from "react";
+import type { MotionAppearance } from "../../types/motion";
+import { FormulaPanel } from "../motionlabs/FormulaPanel";
+import { PlaybackPanel } from "../motionlabs/PlaybackPanel";
+import { BaseLayout } from "./base-layout";
 
 export const MotionLabLayout: FC<{
-  appearance: MotionAppearance
-  parameterForm: ReactNode
-  visualization: ReactNode
-  currentTime: number
-  duration: number
-  playing: boolean
-  onPlayingChange: (playing: boolean) => void
-  onTimeChange: (time: number) => void
-  onStepFrame: (direction: -1 | 1) => void
-  onReset: () => void
+  appearance: MotionAppearance;
+  parameterForm: ReactNode;
+  visualization: ReactNode;
+  currentTime: number;
+  duration: number;
+  playing: boolean;
+  onPlayingChange: (playing: boolean) => void;
+  onTimeChange: (time: number) => void;
+  onStepFrame: (direction: -1 | 1) => void;
+  onReset: () => void;
 }> = ({
   appearance,
   parameterForm,
@@ -30,7 +30,7 @@ export const MotionLabLayout: FC<{
   onStepFrame,
   onReset,
 }) => {
-  const t = useTheme()
+  const t = useTheme();
 
   return (
     <BaseLayout title={appearance.title} color={t.palette.primary.main}>
@@ -55,5 +55,5 @@ export const MotionLabLayout: FC<{
         </Grid>
       </Stack>
     </BaseLayout>
-  )
-}
+  );
+};

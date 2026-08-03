@@ -1,15 +1,15 @@
-import type { FC } from 'react'
-import { sceneTokens } from './scene-tokens'
+import type { FC } from "react";
+import { sceneTokens } from "./scene-tokens";
 
 export const MotionLine: FC<{
-  x1: number
-  y1: number
-  x2: number
-  y2: number
-  color?: string
-  dashed?: boolean
-  dotted?: boolean
-  width?: number
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  color?: string;
+  dashed?: boolean;
+  dotted?: boolean;
+  width?: number;
 }> = ({
   x1,
   y1,
@@ -27,7 +27,7 @@ export const MotionLine: FC<{
     y2={y2}
     stroke={color}
     strokeWidth={width}
-    strokeDasharray={dotted ? '1 6' : dashed ? '7 6' : undefined}
-    strokeLinecap={dotted ? 'round' : 'butt'}
+    strokeDasharray={dotted ? "1 6" : dashed ? "7 6" : undefined}
+    strokeLinecap={dotted ? "round" : "butt"}
   />
-)
+);

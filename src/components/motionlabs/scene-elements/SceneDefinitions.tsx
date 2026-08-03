@@ -1,11 +1,11 @@
-import type { FC } from 'react'
-import { sceneTokens } from './scene-tokens'
+import type { FC } from "react";
+import { sceneTokens } from "./scene-tokens";
 
 export const SceneDefinitions: FC<{
-  instanceId: string
-  arrowMarkerId: string
-  glowFilterId: string
-  arrowColor: string
+  instanceId: string;
+  arrowMarkerId: string;
+  glowFilterId: string;
+  arrowColor: string;
 }> = ({ instanceId, arrowMarkerId, glowFilterId, arrowColor }) => (
   <defs>
     <pattern
@@ -41,4 +41,4 @@ export const SceneDefinitions: FC<{
       <path d="M 0 0 L 10 5 L 0 10 z" fill={arrowColor} />
     </marker>
   </defs>
-)
+);

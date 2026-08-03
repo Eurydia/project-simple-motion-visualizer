@@ -1,11 +1,11 @@
-import type { FC } from 'react'
-import type { MotionMeasurement } from '../../../types/motion'
-import { formatMeasurementLabel } from './format-measurement'
+import type { FC } from "react";
+import type { MotionMeasurement } from "../../../types/motion";
+import { formatMeasurementLabel } from "./format-measurement";
 
 export const SceneMeasurements: FC<{
-  color: string
-  time: number
-  measurements: readonly MotionMeasurement[]
+  color: string;
+  time: number;
+  measurements: readonly MotionMeasurement[];
 }> = ({ color, time, measurements }) => (
   <>
     <text
@@ -23,4 +23,4 @@ export const SceneMeasurements: FC<{
       ))}
     </g>
   </>
-)
+);

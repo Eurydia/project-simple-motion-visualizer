@@ -1,29 +1,29 @@
-import type { LinearSimulation } from '#/features/linear/computation'
+import type { FC } from "react";
+import type { LinearSimulation } from "#/features/linear/computation";
 import {
   getLinearMeasurements,
   getLinearPosition,
-} from '#/features/linear/computation'
-import { m } from '#/lib/paraglide/messages'
-import type { FC } from 'react'
-import { formatMeasurement } from '../scene-elements/format-measurement'
-import { MotionArrow } from '../scene-elements/MotionArrow'
-import { MotionDot } from '../scene-elements/MotionDot'
-import { MotionLabel } from '../scene-elements/MotionLabel'
-import { MotionLine } from '../scene-elements/MotionLine'
-import { MotionScene } from '../scene-elements/MotionScene'
+} from "#/features/linear/computation";
+import { m } from "#/lib/paraglide/messages";
+import { formatMeasurement } from "../scene-elements/format-measurement";
+import { MotionArrow } from "../scene-elements/MotionArrow";
+import { MotionDot } from "../scene-elements/MotionDot";
+import { MotionLabel } from "../scene-elements/MotionLabel";
+import { MotionLine } from "../scene-elements/MotionLine";
+import { MotionScene } from "../scene-elements/MotionScene";
 
 export const LinearMotionScene: FC<{
-  simulation: LinearSimulation
-  time: number
+  simulation: LinearSimulation;
+  time: number;
 }> = ({ simulation, time }) => {
-  const startX = 80
-  const endX = 720
-  const centerX = 400
-  const y = 210
-  const halfSpan = simulation.windowHalfSpan ?? 10
-  const pixelsPerMeter = (endX - startX) / (halfSpan * 2)
-  const x = centerX + simulation.velocity * time * pixelsPerMeter
-  const direction = Math.sign(simulation.velocity)
+  const startX = 80;
+  const endX = 720;
+  const centerX = 400;
+  const y = 210;
+  const halfSpan = simulation.windowHalfSpan ?? 10;
+  const pixelsPerMeter = (endX - startX) / (halfSpan * 2);
+  const x = centerX + simulation.velocity * time * pixelsPerMeter;
+  const direction = Math.sign(simulation.velocity);
   return (
     <MotionScene
       time={time}
@@ -84,5 +84,5 @@ export const LinearMotionScene: FC<{
       <MotionLabel x={centerX} y={y + 58} text="x₀" centered />
       <MotionLine x1={centerX} y1={y - 20} x2={centerX} y2={y + 20} dotted />
     </MotionScene>
-  )
-}
+  );
+};
