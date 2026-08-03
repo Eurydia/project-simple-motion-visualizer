@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eurydia.github.io/project-simple-motion-visualizer/sitemap.xml
+Sitemap: https://suea-sci-1.eurydia.work/sitemap.xml
