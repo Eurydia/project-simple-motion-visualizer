@@ -1,6 +1,6 @@
 ![](assets/images/home.png)
 
-> Powered by [React Spring](https://www.react-spring.dev/)
+> Powered by [React Spring](https://www.react-spring.dev/), [Tanstack Router](https://tanstack.com/router/latest), [KaTeX](https://katex.org/) and a couple more lovely libraries!
 
 # ~Simple Motion Visualizer
 
