@@ -8,7 +8,12 @@ export const ParameterSetSelector: FC<{
   onChange: (id: string) => void;
 }> = (props) => {
   return (
-    <Stack direction={"row"} spacing={0.5} useFlexGap sx={{ flexWrap: "wrap" }}>
+    <Stack
+      component="fieldset"
+      direction="row"
+      spacing={0.5}
+      sx={{ border: 0, flexWrap: "wrap", margin: 0, padding: 0 }}
+    >
       {props.options.map((opt) => {
         const selected = opt.id === props.activeValueId;
         return (
@@ -17,7 +22,6 @@ export const ParameterSetSelector: FC<{
             disableElevation
             key={opt.id}
             variant="contained"
-            aria-pressed={selected}
             onClick={() => {
               if (props.activeValueId !== opt.id) {
                 props.onChange(opt.id);

@@ -1,4 +1,3 @@
-import "katex/dist/katex.min.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -23,7 +22,7 @@ export const APP_THEME = responsiveFontSizes(
     shape: { borderRadius: 12 },
     components: {
       MuiCssBaseline: {
-        styleOverrides: {
+        styleOverrides: (theme) => ({
           ":root:lang(en)": {
             "--app-font-family": ['"Roboto"', "sans-serif"].join(","),
           },
@@ -32,15 +31,15 @@ export const APP_THEME = responsiveFontSizes(
           },
           body: {
             minHeight: "100vh",
-            backgroundColor: "#fbfaf2",
+            backgroundColor: theme.palette.background.default,
             backgroundImage: [
-              "linear-gradient(rgba(93, 139, 176, 0.07) 1px, transparent 1px)",
-              "linear-gradient(90deg, rgba(93, 139, 176, 0.07) 1px, transparent 1px)",
+              `linear-gradient(${theme.alpha(theme.palette.info.main, 0.07)} ${theme.spacing(0.125)}, transparent ${theme.spacing(0.125)})`,
+              `linear-gradient(90deg, ${theme.alpha(theme.palette.info.main, 0.07)} ${theme.spacing(0.125)}, transparent ${theme.spacing(0.125)})`,
             ].join(","),
-            backgroundSize: "32px 32px",
+            backgroundSize: `${theme.spacing(4)} ${theme.spacing(4)}`,
           },
           "::selection": { backgroundColor: "#ffe58f" },
-        },
+        }),
       },
       MuiButton: {
         styleOverrides: {
@@ -49,22 +48,27 @@ export const APP_THEME = responsiveFontSizes(
       },
       MuiCard: {
         styleOverrides: {
-          root: {
-            border: "1px solid rgba(36, 66, 87, 0.2)",
-            boxShadow: "3px 4px 0 rgba(36, 66, 87, 0.12)",
-          },
+          root: ({ theme }) => ({
+            border: `${theme.spacing(0.125)} solid ${theme.alpha(theme.palette.text.primary, 0.2)}`,
+            boxShadow: `${theme.spacing(0.375)} ${theme.spacing(0.5)} 0 ${theme.alpha(theme.palette.text.primary, 0.12)}`,
+          }),
         },
       },
       MuiOutlinedInput: {
         styleOverrides: {
-          root: { backgroundColor: "rgba(255, 255, 255, 0.72)" },
+          root: ({ theme }) => ({
+            backgroundColor: theme.alpha(theme.palette.common.white, 0.72),
+          }),
         },
       },
       MuiSlider: {
         styleOverrides: {
-          thumb: { boxShadow: "0 0 0 3px #fffef9, 0 0 0 5px currentColor" },
+          thumb: ({ theme }) => ({
+            boxShadow: `0 0 0 ${theme.spacing(0.375)} ${theme.palette.background.paper}, 0 0 0 ${theme.spacing(0.625)} currentColor`,
+          }),
         },
       },
+      MuiStack: { defaultProps: { useFlexGap: true } },
     },
   }),
 );

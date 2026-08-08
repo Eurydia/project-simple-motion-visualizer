@@ -6,7 +6,7 @@ import { Box, Stack } from "@mui/system";
 import type { FC } from "react";
 import { useFieldContext } from "#/lib/form/form-contexts";
 import type { MotionParameter } from "#/types/motion";
-import { MathText } from "../motionlabs/MathText";
+import { MathText } from "../ui/MathText";
 
 export const MotionNumberField: FC<{
   parameter: MotionParameter<string>;
@@ -18,13 +18,18 @@ export const MotionNumberField: FC<{
       ? String(error.message)
       : parameter.hint;
   return (
-    <Box>
+    <Box component="section">
       <Stack
+        component="header"
         direction="row"
         sx={{ justifyContent: "space-between", alignItems: "baseline", mb: 1 }}
       >
-        <Typography sx={{ fontWeight: 700 }}>{parameter.label}</Typography>
+        <Typography component="h2" variant="body1" sx={{ fontWeight: 700 }}>
+          {parameter.label}
+        </Typography>
         <Chip
+          component="data"
+          value={parameter.symbol}
           label={<MathText math={parameter.symbol} />}
           sx={{
             bgcolor: (t) => t.palette.primary.light,
@@ -46,10 +51,12 @@ export const MotionNumberField: FC<{
           field.handleChange(value === "" ? Number.NaN : Number(value));
         }}
         slotProps={{
-          htmlInput: { step: parameter.step, "aria-label": parameter.label },
+          htmlInput: { step: parameter.step },
           input: {
             endAdornment: parameter.unit ? (
-              <InputAdornment position="end">{parameter.unit}</InputAdornment>
+              <InputAdornment component="abbr" position="end">
+                {parameter.unit}
+              </InputAdornment>
             ) : undefined,
           },
         }}

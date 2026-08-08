@@ -12,8 +12,8 @@ import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import type { FC, ReactNode } from "react";
+import { formatTimelineTime } from "#/helpers/playback";
 import { m } from "#/lib/paraglide/messages";
-import { formatTimelineTime } from "../../helpers/playback.js";
 
 export const PlaybackPanel: FC<{
   visualization: ReactNode;
@@ -35,11 +35,20 @@ export const PlaybackPanel: FC<{
   onReset,
 }) => (
   <Card
+    component="article"
     variant="outlined"
-    sx={{ backgroundColor: "rgba(255, 254, 249, 0.84)", padding: 2 }}
+    sx={(theme) => ({
+      backgroundColor: theme.alpha(theme.palette.background.paper, 0.84),
+      padding: 2,
+    })}
   >
-    <Stack spacing={2}>
-      <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
+    <Stack component="section" spacing={2}>
+      <Stack
+        component="nav"
+        direction="row"
+        spacing={0.5}
+        sx={{ alignItems: "center" }}
+      >
         <Button
           variant="contained"
           disableElevation
@@ -67,7 +76,7 @@ export const PlaybackPanel: FC<{
           <RestartAltRounded />
         </IconButton>
       </Stack>
-      <Box>
+      <Box component="section">
         <Slider
           min={0}
           max={duration}
@@ -79,11 +88,20 @@ export const PlaybackPanel: FC<{
           }}
           sx={{ color: (t) => t.palette.primary.dark }}
         />
-        <Stack direction="row" sx={{ justifyContent: "space-between" }}>
-          <Typography variant="caption" sx={{ fontFamily: "monospace" }}>
+        <Stack
+          component="footer"
+          direction="row"
+          sx={{ justifyContent: "space-between" }}
+        >
+          <Typography
+            component="time"
+            variant="caption"
+            sx={{ fontFamily: "monospace" }}
+          >
             {formatTimelineTime(currentTime)}
           </Typography>
           <Typography
+            component="time"
             variant="caption"
             color="textSecondary"
             sx={{ fontFamily: "monospace" }}
@@ -92,7 +110,9 @@ export const PlaybackPanel: FC<{
           </Typography>
         </Stack>
       </Box>
-      <Box>{visualization}</Box>
+      <Box component="figure" sx={{ margin: 0 }}>
+        {visualization}
+      </Box>
     </Stack>
   </Card>
 );

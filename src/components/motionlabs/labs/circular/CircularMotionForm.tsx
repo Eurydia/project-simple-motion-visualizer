@@ -1,10 +1,10 @@
 import Stack from "@mui/material/Stack";
 import type { FC } from "react";
-import { ParameterFormLayout } from "../../components/forms/ParameterFormLayout";
-import { ParameterSetSelector } from "../../components/forms/ParameterSetSelector";
-import type { useCircularMotion } from "../../hooks/use-circular-motion";
-import type { CircularParameterSetId } from "./config";
-import { circularParameterSets } from "./config";
+import { ParameterFormLayout } from "#/components/motionlabs/forms/ParameterFormLayout";
+import { ParameterSetSelector } from "#/components/motionlabs/forms/ParameterSetSelector";
+import type { CircularParameterSetId } from "#/features/circular/config";
+import { circularParameterSets } from "#/features/circular/config";
+import type { useCircularMotion } from "#/hooks/use-circular-motion";
 
 const isCircularParameterSetId = (
   value: string,
@@ -33,7 +33,7 @@ export const CircularMotionForm: FC<{
         />
       }
       fields={
-        <Stack spacing={3}>
+        <Stack component="section" spacing={3}>
           {parameterSet.parameters.map((parameter) => (
             <controller.form.AppField key={parameter.key} name={parameter.key}>
               {(field) => <field.MotionNumberField parameter={parameter} />}

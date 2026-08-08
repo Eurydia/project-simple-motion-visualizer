@@ -1,9 +1,9 @@
 import Stack from "@mui/material/Stack";
 import type { FC } from "react";
-import { ParameterFormLayout } from "../../components/forms/ParameterFormLayout";
-import { ParameterSetSelector } from "../../components/forms/ParameterSetSelector";
-import type { useSpringMotion } from "../../hooks/use-spring-motion";
-import { springParameterSets } from "./config";
+import { ParameterFormLayout } from "#/components/motionlabs/forms/ParameterFormLayout";
+import { ParameterSetSelector } from "#/components/motionlabs/forms/ParameterSetSelector";
+import { springParameterSets } from "#/features/spring/config";
+import type { useSpringMotion } from "#/hooks/use-spring-motion";
 
 export const SpringMotionForm: FC<{
   controller: ReturnType<typeof useSpringMotion>;
@@ -29,7 +29,7 @@ export const SpringMotionForm: FC<{
         />
       }
       fields={
-        <Stack spacing={3}>
+        <Stack component="section" spacing={3}>
           {parameterSet.parameters.map((parameter) => (
             <controller.form.AppField key={parameter.key} name={parameter.key}>
               {(field) => <field.MotionNumberField parameter={parameter} />}

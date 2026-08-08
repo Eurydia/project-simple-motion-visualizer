@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import type { MotionMeasurement } from "../../../types/motion";
-import { formatMeasurementLabel } from "./format-measurement";
+import { formatMeasurementLabel } from "#/helpers/format-measurement";
+import type { MotionMeasurement } from "#/types/motion";
 
 export const SceneMeasurements: FC<{
   color: string;

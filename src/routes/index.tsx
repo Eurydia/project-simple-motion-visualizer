@@ -70,20 +70,26 @@ export const Route = createFileRoute("/")({ component: HomePage });
 function HomePage() {
   return (
     <BaseLayout title={m.app_title()} color="#81d4fa">
-      <Grid container spacing={4}>
+      <Grid
+        component="ul"
+        container
+        spacing={4}
+        sx={{ listStyle: "none", margin: 0, padding: 0 }}
+      >
         {MOTION_CARDS.map(({ theme, id, route, appearance, icon }) => (
-          <Grid key={id} size={{ xs: 12, md: 6 }}>
+          <Grid component="li" key={id} size={{ xs: 12, md: 6 }}>
             <ThemeProvider theme={theme}>
               <Card
+                component="article"
                 elevation={0}
                 sx={(t) => ({
                   backgroundColor: t.palette.primary.light,
-                  border: `1px solid ${t.palette.primary.dark}`,
+                  border: `${t.spacing(0.125)} solid ${t.palette.primary.dark}`,
                   transform: "rotate(-0.35deg)",
                   transition: "transform 160ms ease, box-shadow 160ms ease",
                   ":hover": {
                     boxShadow: t.shadows[8],
-                    transform: "translateY(-5px) rotate(0.25deg)",
+                    transform: `translateY(-${t.spacing(0.625)}) rotate(0.25deg)`,
                   },
                 })}
               >
@@ -93,20 +99,24 @@ function HomePage() {
                   sx={{ cursor: "pointer" }}
                 >
                   <Stack
+                    component="section"
                     sx={{ padding: 2 }}
                     direction={{ xs: "column", md: "row" }}
                   >
                     <CardContent
+                      component="figure"
                       sx={(t) => ({
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: t.typography.h1.fontSize,
+                        margin: 0,
                       })}
                     >
                       {icon}
                     </CardContent>
                     <CardHeader
+                      component="header"
                       title={
                         <NotebookAnnotation
                           color={theme.palette.primary.dark}
@@ -117,6 +127,7 @@ function HomePage() {
                       }
                       slotProps={{
                         title: {
+                          component: "h2",
                           sx: {
                             fontWeight: 700,
                             textAlign: { xs: "center", md: "left" },

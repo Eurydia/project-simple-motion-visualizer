@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { sceneTokens } from "./scene-tokens";
 
 export const MotionLabel: FC<{
   x: number;
@@ -10,7 +9,7 @@ export const MotionLabel: FC<{
   <text
     x={x}
     y={y}
-    fill={sceneTokens.ink}
+    fill="#455a64"
     fontFamily="monospace"
     fontSize="12"
     textAnchor={centered ? "middle" : "start"}

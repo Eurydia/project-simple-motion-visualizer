@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { sceneTokens } from "./scene-tokens";
 
 export const MotionLine: FC<{
   x1: number;
@@ -15,7 +14,7 @@ export const MotionLine: FC<{
   y1,
   x2,
   y2,
-  color = sceneTokens.guide,
+  color = "#90a4ae",
   dashed = false,
   dotted = false,
   width = 1,

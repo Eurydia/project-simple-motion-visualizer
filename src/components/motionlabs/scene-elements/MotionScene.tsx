@@ -2,11 +2,10 @@ import { useTheme } from "@mui/material/styles";
 import { animated, useSpring } from "@react-spring/web";
 import type { FC, ReactNode } from "react";
 import { useId } from "react";
-import type { MotionMeasurement } from "../../../types/motion";
-import { MotionSceneContext } from "./MotionSceneContext";
+import { MotionSceneContext } from "#/contexts/MotionSceneContext";
+import type { MotionMeasurement } from "#/types/motion";
 import { SceneDefinitions } from "./SceneDefinitions";
 import { SceneMeasurements } from "./SceneMeasurements";
-import { sceneTokens } from "./scene-tokens";
 
 export const MotionScene: FC<{
   time: number;
@@ -26,11 +25,11 @@ export const MotionScene: FC<{
   return (
     <MotionSceneContext.Provider value={{ arrowMarkerId, glowFilterId }}>
       <svg
-        viewBox={`0 0 ${sceneTokens.width} ${sceneTokens.height}`}
+        viewBox="0 0 800 420"
         style={{
           display: "block",
           width: "100%",
-          minHeight: 300,
+          minHeight: t.spacing(37.5),
           background: "#ffffff",
         }}
       >
@@ -41,8 +40,8 @@ export const MotionScene: FC<{
           arrowColor={t.palette.primary.dark}
         />
         <rect
-          width={sceneTokens.width}
-          height={sceneTokens.height}
+          width="800"
+          height="420"
           fill={`url(#motion-grid-${instanceId})`}
         />
         <animated.g style={entrance}>{props.children}</animated.g>

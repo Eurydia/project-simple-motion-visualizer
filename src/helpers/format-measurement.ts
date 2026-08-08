@@ -1,4 +1,4 @@
-import type { MotionMeasurement } from "../../../types/motion";
+import type { MotionMeasurement } from "#/types/motion";
 
 const symbols: { [Symbol in MotionMeasurement["symbol"]]: string } = {
   v_x: "vₓ",

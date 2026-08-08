@@ -1,17 +1,17 @@
 import { useTheme } from "@mui/material/styles";
 import { animated, useSpring } from "@react-spring/web";
 import type { FC } from "react";
+import { MotionArrow } from "#/components/motionlabs/scene-elements/MotionArrow";
+import { MotionDot } from "#/components/motionlabs/scene-elements/MotionDot";
+import { MotionLabel } from "#/components/motionlabs/scene-elements/MotionLabel";
+import { MotionLine } from "#/components/motionlabs/scene-elements/MotionLine";
+import { MotionScene } from "#/components/motionlabs/scene-elements/MotionScene";
 import type { SpringSimulation } from "#/features/spring/computation";
 import {
   getSpringMeasurements,
   getSpringPosition,
 } from "#/features/spring/computation";
 import { m } from "#/lib/paraglide/messages";
-import { MotionArrow } from "../scene-elements/MotionArrow";
-import { MotionDot } from "../scene-elements/MotionDot";
-import { MotionLabel } from "../scene-elements/MotionLabel";
-import { MotionLine } from "../scene-elements/MotionLine";
-import { MotionScene } from "../scene-elements/MotionScene";
 
 export const SpringMotionScene: FC<{
   simulation: SpringSimulation;

@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { createFileRoute } from "@tanstack/react-router";
+import { CircularMotionLab } from "#/components/motionlabs/labs/circular/CircularMotionLab";
 import { CIRCULAR_THEME } from "#/theme/motionlabs/circular";
-import { CircularMotionLab } from "../../features/circular/CircularMotionLab";
 
 export const Route = createFileRoute("/motionlabs/circular")({
   component: RouteComponent,

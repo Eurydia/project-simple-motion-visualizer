@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import { animated, useSpring } from "@react-spring/web";
 import type { FC } from "react";
-import { useMotionSceneContext } from "./MotionSceneContext";
+import { useMotionSceneContext } from "#/contexts/MotionSceneContext";
 
 export const MotionDot: FC<{ x: number; y: number }> = (props) => {
   const { glowFilterId } = useMotionSceneContext();

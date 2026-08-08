@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { sceneTokens } from "./scene-tokens";
 
 export const SceneDefinitions: FC<{
   instanceId: string;
@@ -17,7 +16,7 @@ export const SceneDefinitions: FC<{
       <path
         d="M 32 0 L 0 0 0 32"
         fill="none"
-        stroke={sceneTokens.grid}
+        stroke="#dfe5e7"
         strokeDasharray="1 7"
         strokeLinecap="round"
       />

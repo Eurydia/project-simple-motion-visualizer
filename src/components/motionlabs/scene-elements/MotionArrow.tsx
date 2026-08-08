@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import type { FC } from "react";
+import { useMotionSceneContext } from "#/contexts/MotionSceneContext";
 import { MotionLabel } from "./MotionLabel";
-import { useMotionSceneContext } from "./MotionSceneContext";
 
 export const MotionArrow: FC<{
   x1: number;

@@ -1,14 +1,14 @@
 import type { FC } from "react";
-import { MotionLabLayout } from "#/components/layout/MotionLabLayout";
-import { CircularMotionScene } from "#/components/motionlabs/scenes/CircularMotionScene";
+import { MotionLab } from "#/components/motionlabs/MotionLab";
+import { circularAppearance } from "#/features/circular/config";
 import { useCircularMotion } from "#/hooks/use-circular-motion";
 import { CircularMotionForm } from "./CircularMotionForm";
-import { circularAppearance } from "./config";
+import { CircularMotionScene } from "./CircularMotionScene";
 
 export const CircularMotionLab: FC = () => {
   const controller = useCircularMotion();
   return (
-    <MotionLabLayout
+    <MotionLab
       appearance={circularAppearance}
       parameterForm={<CircularMotionForm controller={controller} />}
       visualization={

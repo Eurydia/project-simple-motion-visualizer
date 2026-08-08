@@ -1,14 +1,14 @@
 import type { FC } from "react";
-import { MotionLabLayout } from "#/components/layout/MotionLabLayout";
-import { LinearMotionScene } from "#/components/motionlabs/scenes/LinearMotionScene";
+import { MotionLab } from "#/components/motionlabs/MotionLab";
+import { linearAppearance } from "#/features/linear/config";
 import { useLinearMotion } from "#/hooks/use-linear-motion";
-import { linearAppearance } from "./config";
 import { LinearMotionForm } from "./LinearMotionForm";
+import { LinearMotionScene } from "./LinearMotionScene";
 
 export const LinearMotionLab: FC = () => {
   const controller = useLinearMotion();
   return (
-    <MotionLabLayout
+    <MotionLab
       appearance={linearAppearance}
       parameterForm={<LinearMotionForm controller={controller} />}
       visualization={

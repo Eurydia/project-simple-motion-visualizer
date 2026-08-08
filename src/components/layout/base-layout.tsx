@@ -12,20 +12,20 @@ export const BaseLayout: FC<{
   return (
     <>
       <Box
-        sx={{
+        component="header"
+        sx={(theme) => ({
           backgroundColor: color,
-          borderBottom: "3px solid rgba(36, 66, 87, 0.22)",
+          borderBottom: `${theme.spacing(0.375)} solid ${theme.alpha(theme.palette.text.primary, 0.22)}`,
           paddingY: { xs: 4, md: 5 },
           paddingX: 2,
-        }}
+        })}
       >
-        <Container maxWidth="lg">
+        <Container component="section" maxWidth="lg">
           <NotebookAnnotation color="#244257" padding={[2, 4]} type="underline">
             <Typography
-              component="span"
+              component="h1"
               variant="h1"
               sx={{
-                fontFamily: '"Mali", var(--app-font-family)',
                 textTransform: "capitalize",
                 overflowWrap: "break-word",
               }}
@@ -40,7 +40,7 @@ export const BaseLayout: FC<{
         maxWidth="lg"
         sx={{ paddingY: { xs: 6, md: 8 } }}
       >
-        <Box>{children}</Box>
+        {children}
       </Container>
     </>
   );

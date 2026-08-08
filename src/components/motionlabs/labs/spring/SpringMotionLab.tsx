@@ -1,15 +1,15 @@
 import type { FC } from "react";
-import { MotionLabLayout } from "../../components/layout/MotionLabLayout";
-import { SpringMotionScene } from "../../components/motionlabs/scenes/SpringMotionScene";
-import { useSpringMotion } from "../../hooks/use-spring-motion";
-import { springAppearance } from "./config";
+import { MotionLab } from "#/components/motionlabs/MotionLab";
+import { springAppearance } from "#/features/spring/config";
+import { useSpringMotion } from "#/hooks/use-spring-motion";
 import { SpringMotionForm } from "./SpringMotionForm";
+import { SpringMotionScene } from "./SpringMotionScene";
 
 export const SpringMotionLab: FC = () => {
   const controller = useSpringMotion();
 
   return (
-    <MotionLabLayout
+    <MotionLab
       appearance={springAppearance}
       parameterForm={<SpringMotionForm controller={controller} />}
       visualization={

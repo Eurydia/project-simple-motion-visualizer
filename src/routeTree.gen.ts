@@ -10,24 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as MotionlabsSpringRouteImport } from './routes/motionlabs/spring'
-import { Route as MotionlabsParabolaRouteImport } from './routes/motionlabs/parabola'
-import { Route as MotionlabsLinearRouteImport } from './routes/motionlabs/linear'
 import { Route as MotionlabsCircularRouteImport } from './routes/motionlabs/circular'
+import { Route as MotionlabsLinearRouteImport } from './routes/motionlabs/linear'
+import { Route as MotionlabsParabolaRouteImport } from './routes/motionlabs/parabola'
+import { Route as MotionlabsSpringRouteImport } from './routes/motionlabs/spring'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MotionlabsSpringRoute = MotionlabsSpringRouteImport.update({
-  id: '/motionlabs/spring',
-  path: '/motionlabs/spring',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MotionlabsParabolaRoute = MotionlabsParabolaRouteImport.update({
-  id: '/motionlabs/parabola',
-  path: '/motionlabs/parabola',
+const MotionlabsCircularRoute = MotionlabsCircularRouteImport.update({
+  id: '/motionlabs/circular',
+  path: '/motionlabs/circular',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MotionlabsLinearRoute = MotionlabsLinearRouteImport.update({
@@ -35,9 +30,14 @@ const MotionlabsLinearRoute = MotionlabsLinearRouteImport.update({
   path: '/motionlabs/linear',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MotionlabsCircularRoute = MotionlabsCircularRouteImport.update({
-  id: '/motionlabs/circular',
-  path: '/motionlabs/circular',
+const MotionlabsParabolaRoute = MotionlabsParabolaRouteImport.update({
+  id: '/motionlabs/parabola',
+  path: '/motionlabs/parabola',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MotionlabsSpringRoute = MotionlabsSpringRouteImport.update({
+  id: '/motionlabs/spring',
+  path: '/motionlabs/spring',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -104,18 +104,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/motionlabs/spring': {
-      id: '/motionlabs/spring'
-      path: '/motionlabs/spring'
-      fullPath: '/motionlabs/spring'
-      preLoaderRoute: typeof MotionlabsSpringRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/motionlabs/parabola': {
-      id: '/motionlabs/parabola'
-      path: '/motionlabs/parabola'
-      fullPath: '/motionlabs/parabola'
-      preLoaderRoute: typeof MotionlabsParabolaRouteImport
+    '/motionlabs/circular': {
+      id: '/motionlabs/circular'
+      path: '/motionlabs/circular'
+      fullPath: '/motionlabs/circular'
+      preLoaderRoute: typeof MotionlabsCircularRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/motionlabs/linear': {
@@ -125,11 +118,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MotionlabsLinearRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/motionlabs/circular': {
-      id: '/motionlabs/circular'
-      path: '/motionlabs/circular'
-      fullPath: '/motionlabs/circular'
-      preLoaderRoute: typeof MotionlabsCircularRouteImport
+    '/motionlabs/parabola': {
+      id: '/motionlabs/parabola'
+      path: '/motionlabs/parabola'
+      fullPath: '/motionlabs/parabola'
+      preLoaderRoute: typeof MotionlabsParabolaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/motionlabs/spring': {
+      id: '/motionlabs/spring'
+      path: '/motionlabs/spring'
+      fullPath: '/motionlabs/spring'
+      preLoaderRoute: typeof MotionlabsSpringRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

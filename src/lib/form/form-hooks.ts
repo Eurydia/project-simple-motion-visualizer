@@ -1,5 +1,5 @@
 import { createFormHook } from "@tanstack/react-form";
-import { MotionNumberField } from "#/components/forms/MotionNumberField";
+import { MotionNumberField } from "#/components/motionlabs/forms/MotionNumberField";
 import { fieldContext, formContext } from "./form-contexts";
 
 export const { useAppForm: useMotionForm } = createFormHook({

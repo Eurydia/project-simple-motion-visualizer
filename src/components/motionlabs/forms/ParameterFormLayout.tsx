@@ -8,11 +8,14 @@ export const ParameterFormLayout: FC<{
   fields: ReactNode;
 }> = ({ selector, fields }) => (
   <Card
+    component="form"
     variant="outlined"
-    sx={{ backgroundColor: "rgba(255, 254, 249, 0.85)" }}
+    sx={(theme) => ({
+      backgroundColor: theme.alpha(theme.palette.background.paper, 0.85),
+    })}
   >
-    <CardContent sx={{ p: { xs: 3, md: 4 } }}>
-      <Stack spacing={4}>
+    <CardContent component="section" sx={{ p: { xs: 3, md: 4 } }}>
+      <Stack component="section" spacing={4}>
         {selector}
         {fields}
       </Stack>

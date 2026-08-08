@@ -1,10 +1,10 @@
 import Stack from "@mui/material/Stack";
 import type { FC } from "react";
-import { ParameterFormLayout } from "../../components/forms/ParameterFormLayout";
-import { ParameterSetSelector } from "../../components/forms/ParameterSetSelector";
-import type { useParabolaMotion } from "../../hooks/use-parabola-motion";
-import type { ParabolaParameterSetId } from "./config";
-import { parabolaParameterSets } from "./config";
+import { ParameterFormLayout } from "#/components/motionlabs/forms/ParameterFormLayout";
+import { ParameterSetSelector } from "#/components/motionlabs/forms/ParameterSetSelector";
+import type { ParabolaParameterSetId } from "#/features/parabola/config";
+import { parabolaParameterSets } from "#/features/parabola/config";
+import type { useParabolaMotion } from "#/hooks/use-parabola-motion";
 
 const isParabolaParameterSetId = (
   value: string,
@@ -32,7 +32,7 @@ export const ParabolaMotionForm: FC<{
         />
       }
       fields={
-        <Stack spacing={3}>
+        <Stack component="section" spacing={3}>
           {parameterSet.parameters.map((parameter) => (
             <controller.form.AppField key={parameter.key} name={parameter.key}>
               {(field) => <field.MotionNumberField parameter={parameter} />}
