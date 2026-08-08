@@ -1,0 +1,1 @@
+import{n as e}from"./app-DJRxdT3x.js";var t=()=>`Period`,n=()=>`คาบ`,r=((r={},i={})=>(i.locale??e())===`th`?n(r):t(r));export{r as t};

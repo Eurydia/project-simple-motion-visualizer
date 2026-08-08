@@ -1,0 +1,1 @@
+import{mt as e}from"./app-DJRxdT3x.js";var t=e(),n=({x1:e,y1:n,x2:r,y2:i,color:a=`#90a4ae`,dashed:o=!1,dotted:s=!1,width:c=1})=>(0,t.jsx)(`line`,{x1:e,y1:n,x2:r,y2:i,stroke:a,strokeWidth:c,strokeDasharray:s?`1 6`:o?`7 6`:void 0,strokeLinecap:s?`round`:`butt`});export{n as t};

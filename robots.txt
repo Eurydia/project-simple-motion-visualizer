@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://suea-sci-1.eurydia.work/sitemap.xml
+Sitemap: https://motionviz.eurydia.work/sitemap.xml
